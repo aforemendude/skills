@@ -1,7 +1,7 @@
 {
   "name": "markdown-review",
   "version": "0.1.0",
-  "description": "Review Markdown changes with additional checks for prompts and skills.",
+  "description": "Review Markdown changes with additional checks for Markdown prompts and SKILL.md files.",
   "author": {
     "name": "aforemendude",
     "url": "https://github.com/aforemendude"
@@ -12,11 +12,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Markdown Review",
-    "shortDescription": "Review Markdown, prompts, and skills",
-    "longDescription": "Review recent Markdown changes for correctness and clarity, with additional instruction, safety, and metadata checks for prompts and skills.",
+    "shortDescription": "Review Markdown, Markdown prompts, and SKILL.md",
+    "longDescription": "Review recent Markdown changes for correctness and clarity, with additional instruction, safety, and metadata checks for Markdown prompts and SKILL.md files.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read"],
-    "defaultPrompt": ["Use $markdown-review to review README.md."]
+    "defaultPrompt": ["Use $markdown-review to review the recent changes in README.md."]
   }
 }
