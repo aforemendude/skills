@@ -11,8 +11,8 @@ description:
 # Inputs
 
 - Require one or more existing Markdown file paths. Targets may be ordinary Markdown, AI prompts written in Markdown, or
-  `SKILL.md` files. If a target is missing, ambiguous, a directory, a glob, or a non-Markdown file, stop and ask for the
-  exact path of each invalid target before continuing.
+  `SKILL.md` files. If a target is missing, ambiguous, or a non-Markdown file, stop and ask for the exact path of each
+  invalid target before continuing.
 - Accept any clearly stated review scope. Interpret reasonable descriptions according to the user's intent, apply a
   shared scope to every target, and honor target-specific scopes when provided. An explicit scope overrides the default
   baseline.
@@ -107,8 +107,8 @@ For each finding, provide the severity (`Critical`, `High`, `Medium`, or `Low`),
 line or line range in the updated version, the problematic text or location, the problem, its impact, and a
 recommendation. If deleted content should be restored, cite the updated-file line where the content should be inserted.
 
-End with a `Potential gotchas` section that lists checks the user might reasonably expect but that were not performed.
-Always disclose that Markdown formatting, syntax validity, and rendering compatibility were deferred to the repository
+End with a `Not Reviewed` section that lists checks the user might reasonably expect but that were not performed. Always
+disclose that Markdown formatting, syntax validity, and rendering compatibility were deferred to the repository
 toolchain. Unless full metadata schema validation was explicitly requested and completed, also disclose that metadata
 was checked only for repository consistency and staleness. Add other material omissions, such as link resolution, tests,
 or live model inference, when relevant. Keep unresolved questions within the applicable target section and separate from
