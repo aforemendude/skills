@@ -17,20 +17,20 @@ description:
 
 # Guidelines
 
-- Review without editing unless the user explicitly asks for fixes.
+- Review without editing unless instructed otherwise.
 - Keep findings focused on the selected changes.
 - Inspect connected repository files when needed to verify a changed link, example, resource, placeholder, or contract.
-- Do not run build, test, live inference, or browse the web unless explicitly requested.
+- Do not run build, test, live inference, or browse the web unless instructed otherwise.
 
 # Workflow
 
 1. Confirm the targets and establish the review baseline.
-2. Classify each target as ordinary Markdown, an AI prompt, a skill, or both prompt and skill. Treat a file as:
+2. Classify each target as ordinary Markdown, a prompt, a skill, or both prompt and skill. Treat a file as:
    - a prompt when the user identifies it as one, its path or filename clearly marks it as one, or its primary content
      instructs an AI model;
    - a skill when the user identifies it as one or it is a `SKILL.md` with skill frontmatter and instructions.
 3. Perform the Markdown review for every target.
-4. Perform the specialized review for every target classified as a prompt or skill.
+4. Perform the specialized review for every target classified as a prompt or a skill.
 5. Report actionable findings in severity order within the required output sections. State explicitly when a section has
    no findings.
 
@@ -68,21 +68,10 @@ For a skill, additionally check:
 - whether the skill stays concise, avoids duplicated guidance, and uses progressive disclosure for detailed material;
 - whether `agents/openai.yaml` and any packaging metadata remain aligned with the skill when those files are in scope.
 
-## Review Standard
+# Outputs
 
-- Explain the concrete ambiguity, inconsistency, or operational impact of every non-editorial finding.
-- Assign editorial defects `Low` severity unless they materially change meaning.
-- Do not expand into unchanged runtime contracts, schemas, jobs, or tests unless needed to substantiate a finding or the
-  requested scope requires it.
-
-## Output
-
-Begin with the named files, review baseline, classifications, and checks performed. Then use:
-
-1. `Markdown review` for findings from the general Markdown pass. Always include this section.
-2. `Specialized review` for prompt- or skill-specific findings, labeled by type. Include this section only when at least
-   one target is classified as a prompt or skill.
+Begin with the named files, review baseline, and classifications. Then, report findings for each target in a section.
 
 For each finding, provide the severity (`Critical`, `High`, `Medium`, or `Low`), a concise title, the exact file and
-line, the problem and impact, and a focused recommendation. Keep unresolved questions within the applicable section and
-separate from findings.
+line, the problem and impact, and recommendation. Keep unresolved questions within the applicable section and separate
+from findings.
