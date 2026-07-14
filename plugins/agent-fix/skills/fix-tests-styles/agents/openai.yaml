@@ -1,6 +1,7 @@
 interface:
   display_name: 'Fix Tests & Styles'
-  short_description: 'Fix CSS ownership and unit test coverage'
-  default_prompt: 'Use $fix-tests-styles to review and fix CSS ownership and unit test coverage across this repository.'
+  short_description: 'Fix CSS ownership, test coverage, and assertions'
+  default_prompt:
+    'Use $fix-tests-styles to review and fix CSS ownership, test coverage, and assertions in this repository.'
 policy:
   allow_implicit_invocation: false

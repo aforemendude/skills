@@ -1,7 +1,7 @@
 {
   "name": "agent-fix",
   "version": "0.1.0",
-  "description": "Audit and fix CSS ownership, unused CSS, unit test ownership, and unit test coverage across repository packages.",
+  "description": "Audit and fix CSS ownership, unused CSS, unit test ownership and coverage, and assertion quality across repository packages.",
   "author": {
     "name": "aforemendude",
     "url": "https://github.com/aforemendude"
@@ -12,13 +12,13 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Fix",
-    "shortDescription": "Fix CSS ownership and unit test coverage",
-    "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak test coverage across repository packages.",
+    "shortDescription": "Fix CSS ownership, test coverage, and assertions",
+    "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak assertions across repository packages.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
     "defaultPrompt": [
-      "Use $fix-tests-styles to audit and fix CSS ownership and unit test coverage across this repository."
+      "Use $fix-tests-styles to audit and fix CSS ownership, test coverage, and assertions in this repository."
     ]
   }
 }

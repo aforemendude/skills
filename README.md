@@ -6,8 +6,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 - **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
   and clarity, with additional checks for prompts and skills.
-- **Agent Fix** (`agent-fix`) — reviews and fixes CSS ownership, unused CSS, unit test ownership, and unit test coverage
-  across repository packages.
+- **Agent Fix** (`agent-fix`) — reviews and fixes CSS ownership, unused CSS, unit test ownership and coverage, and
+  assertion quality across repository packages.
 
 ## Add the marketplace to Codex
 
