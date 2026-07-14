@@ -1,0 +1,6 @@
+interface:
+  display_name: 'Markdown Review'
+  short_description: 'Review Markdown, prompts, and skills'
+  default_prompt: 'Use $markdown-review to review README.md.'
+policy:
+  allow_implicit_invocation: false

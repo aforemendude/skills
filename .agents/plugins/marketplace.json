@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "prompt-review",
+      "name": "markdown-review",
       "source": {
         "source": "local",
-        "path": "./plugins/prompt-review"
+        "path": "./plugins/markdown-review"
       },
       "policy": {
         "installation": "INSTALLED_BY_DEFAULT",

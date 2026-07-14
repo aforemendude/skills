@@ -4,8 +4,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Prompt Review** (`prompt-review`) — reviews recent changes in explicitly named Markdown inference prompt files for
-  correctness, safety, clarity, and consistency.
+- **Markdown Review** (`markdown-review`) — reviews recent Markdown changes for correctness and clarity, with additional
+  checks for prompts and skills.
 
 ## Add the marketplace to Codex
 
@@ -24,7 +24,7 @@ codex plugin marketplace list
 Then install a plugin from the marketplace:
 
 ```bash
-codex plugin add prompt-review@aforemendude-skills
+codex plugin add markdown-review@aforemendude-skills
 ```
 
 Start a new Codex session after installation so the plugin's skills are loaded.
@@ -37,7 +37,7 @@ For marketplace development, clone the repository and register its root director
 git clone git@github.com:aforemendude/skills.git
 cd skills
 codex plugin marketplace add "$PWD"
-codex plugin add prompt-review@aforemendude-skills
+codex plugin add markdown-review@aforemendude-skills
 ```
 
 Restart the ChatGPT desktop app after changing or installing a local plugin.
@@ -55,9 +55,9 @@ codex plugin marketplace remove aforemendude-skills
 .
 ├── .agents/plugins/marketplace.json
 └── plugins/
-    └── prompt-review/
+    └── markdown-review/
         ├── .codex-plugin/plugin.json
-        └── skills/prompt-review/
+        └── skills/markdown-review/
             ├── SKILL.md
             └── agents/openai.yaml
 ```

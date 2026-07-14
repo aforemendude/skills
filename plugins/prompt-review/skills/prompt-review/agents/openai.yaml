@@ -1,5 +1,0 @@
-interface:
-  display_name: 'Prompt Review'
-  short_description: 'Review recent inference prompt changes'
-policy:
-  allow_implicit_invocation: false
