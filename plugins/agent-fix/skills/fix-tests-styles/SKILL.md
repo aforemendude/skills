@@ -22,7 +22,7 @@ dependency and generated-output directories, such as `node_modules`, `dist`, and
 3. Review the CSS and unit test rules below, and make any changes needed to fix ownership, remove unused CSS, and
    improve unit test coverage. If there are any issues or bugs with the source files, report them instead of editing.
 
-# CSS Rules
+## CSS Rules
 
 - Keep component styles in the stylesheet with the same basename as the component source, such as `MyComponent.tsx` and
   `MyComponent.css`.
@@ -37,7 +37,7 @@ dependency and generated-output directories, such as `node_modules`, `dist`, and
   variables, resets, document-level layout, font imports, and other shared global rules. Do not add class or ID
   selectors to it.
 
-# Test Rules
+## Test Rules
 
 - Keep each unit test file next to, or in the package's established test location for, the source file with the matching
   basename, such as `utils.test.ts` testing `utils.ts` or `MyComponent.test.tsx` testing `MyComponent.tsx`.
