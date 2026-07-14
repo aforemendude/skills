@@ -1,0 +1,20 @@
+{
+  "name": "aforemendude-skills",
+  "interface": {
+    "displayName": "aforemendude Skills"
+  },
+  "plugins": [
+    {
+      "name": "prompt-review",
+      "source": {
+        "source": "local",
+        "path": "./plugins/prompt-review"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
