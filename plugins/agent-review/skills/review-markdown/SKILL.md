@@ -1,10 +1,10 @@
 ---
-name: markdown-review
+name: review-markdown
 description:
   Review selected or latest available changes in explicitly named Markdown files for correctness, clarity, structure,
   grammar, consistency, and examples. When a target is an AI prompt written in Markdown or a `SKILL.md` file, also
   review its instruction design, safety, metadata consistency, and operational behavior. Use only when the user
-  explicitly invokes `$markdown-review` or asks to use the markdown-review skill and provides one or more exact Markdown
+  explicitly invokes `$review-markdown` or asks to use the review-markdown skill and provides one or more exact Markdown
   file paths.
 ---
 

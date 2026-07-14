@@ -57,7 +57,7 @@ codex plugin marketplace remove aforemendude-skills
 └── plugins/
     └── agent-review/
         ├── .codex-plugin/plugin.json
-        └── skills/markdown-review/
+        └── skills/review-markdown/
             ├── SKILL.md
             └── agents/openai.yaml
 ```

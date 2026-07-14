@@ -1,6 +1,0 @@
-interface:
-  display_name: 'Markdown Review'
-  short_description: 'Review Markdown, Markdown prompts, and SKILL.md'
-  default_prompt: 'Use $markdown-review to review the latest available changes in README.md.'
-policy:
-  allow_implicit_invocation: false

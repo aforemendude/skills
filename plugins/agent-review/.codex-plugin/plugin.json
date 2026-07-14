@@ -17,6 +17,6 @@
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read"],
-    "defaultPrompt": ["Use $markdown-review to review the latest available changes in README.md."]
+    "defaultPrompt": ["Use $review-markdown to review the latest available changes in README.md."]
   }
 }
