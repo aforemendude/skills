@@ -7,34 +7,31 @@ description:
   markdown-review skill and provides one or more exact Markdown file paths.
 ---
 
-# Markdown Review
+# Inputs
 
-## Requirements
+- Require one or more existing Markdown, AI prompt, or skill file paths. If a target is missing or ambiguous, stop and
+  ask for the specific file before continuing.
+- Optional revision, range, or scope to review. If not specified, review current staged, unstaged, and untracked changes
+  affecting the named files. If none of the named files has current changes, review their changes in the most recent
+  commit that touched at least one of them.
 
-- Require one or more exact, existing Markdown file paths. If a target is missing or ambiguous, ask for the specific
-  file before reviewing.
+# Guidelines
+
 - Review without editing unless the user explicitly asks for fixes.
-- Use the user-specified revision, range, or scope. Otherwise:
-  1. Review current staged, unstaged, and untracked changes affecting the named files.
-  2. If none of the named files has current changes, review their changes in the most recent commit that touched at
-     least one of them.
-- Read every named file in full. Keep findings focused on the selected changes; cite unchanged text only when it
-  establishes an inconsistency or explains impact.
-- Inspect connected repository files only when needed to verify a changed link, example, resource, placeholder, or
-  contract. State any scope expansion in the review.
-- Do not run live inference or browse the web merely to perform the review.
+- Keep findings focused on the selected changes.
+- Inspect connected repository files when needed to verify a changed link, example, resource, placeholder, or contract.
+- Do not run build, test, live inference, or browse the web unless explicitly requested.
 
-## Workflow
+# Workflow
 
 1. Confirm the targets and establish the review baseline.
 2. Classify each target as ordinary Markdown, an AI prompt, a skill, or both prompt and skill. Treat a file as:
    - a prompt when the user identifies it as one, its path or filename clearly marks it as one, or its primary content
      instructs an AI model;
    - a skill when the user identifies it as one or it is a `SKILL.md` with skill frontmatter and instructions.
-3. Read the selected changes, every complete target, and only the connected files needed for validation.
-4. Perform the Markdown review for every target.
-5. Perform the specialized review for every target classified as a prompt or skill.
-6. Report actionable findings in severity order within the required output sections. State explicitly when a section has
+3. Perform the Markdown review for every target.
+4. Perform the specialized review for every target classified as a prompt or skill.
+5. Report actionable findings in severity order within the required output sections. State explicitly when a section has
    no findings.
 
 ## Markdown Review
