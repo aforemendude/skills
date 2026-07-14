@@ -121,4 +121,4 @@ or live model inference, when relevant. Keep unresolved questions within the app
 findings.
 
 After writing the report, respond with its path and a concise finding summary. Do not repeat the complete report in the
-response unless the user asks for it.
+response.
