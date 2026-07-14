@@ -1,14 +1,14 @@
 ---
 name: fix-tests-styles
 description:
-  Audit or fix CSS ownership, unused CSS, unit test ownership, and unit test coverage. Use only when the user explicitly
-  invokes `$fix-tests-styles` or asks to use the fix-tests-styles skill for styles, unit tests, or both.
+  Review or fix CSS ownership, unused CSS, unit test ownership, and unit test coverage. Use only when the user
+  explicitly invokes `$fix-tests-styles` or asks to use the fix-tests-styles skill for styles, unit tests, or both.
 ---
 
 # Scope
 
-Determine whether the user requested an audit or fixes and whether the request covers CSS, unit tests, or both. Do not
-edit files during an audit, and do not work on a category the user did not request.
+Determine whether the user requested a review or fixes and whether the request covers CSS, unit tests, or both. Do not
+edit files during a review, and do not work on a category the user did not request.
 
 Cover all files in the requested scope. If the user does not specify a scope, inspect the entire repository. Apply the
 rules within each application or package boundary, and exclude dependencies, vendored code, and generated-output
@@ -83,4 +83,4 @@ used for the baseline. Fix failures caused by the changes when the fix stays wit
 pre-existing, environmental, and out-of-scope failures without editing production implementation files.
 
 Summarize the files changed, checks run and their results, unresolved source defects, and intentionally deferred items.
-For audit-only work, list actionable findings with file and line references and do not edit files.
+For review-only work, list actionable findings with file and line references and do not edit files.
