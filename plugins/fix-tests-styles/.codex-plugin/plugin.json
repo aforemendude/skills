@@ -1,0 +1,24 @@
+{
+  "name": "fix-tests-styles",
+  "version": "0.1.0",
+  "description": "Audit and fix CSS ownership, unused CSS, unit test ownership, and unit test coverage across repository packages.",
+  "author": {
+    "name": "aforemendude",
+    "url": "https://github.com/aforemendude"
+  },
+  "homepage": "https://github.com/aforemendude/skills",
+  "repository": "https://github.com/aforemendude/skills",
+  "keywords": ["css", "unit-tests", "coverage", "maintenance"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Fix Tests & Styles",
+    "shortDescription": "Fix CSS ownership and unit test coverage",
+    "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak test coverage across repository packages.",
+    "developerName": "aforemendude",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": [
+      "Use $fix-tests-styles to audit and fix CSS ownership and unit test coverage across this repository."
+    ]
+  }
+}
