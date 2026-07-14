@@ -1,5 +1,5 @@
 {
-  "name": "markdown-review",
+  "name": "agent-review",
   "version": "0.1.0",
   "description": "Review Markdown changes with additional checks for Markdown prompts and SKILL.md files.",
   "author": {
@@ -11,7 +11,7 @@
   "keywords": ["markdown", "prompts", "skills", "review"],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Markdown Review",
+    "displayName": "Agent Review",
     "shortDescription": "Review Markdown, Markdown prompts, and SKILL.md",
     "longDescription": "Review recent Markdown changes for correctness and clarity, with additional instruction, safety, and metadata checks for Markdown prompts and SKILL.md files.",
     "developerName": "aforemendude",

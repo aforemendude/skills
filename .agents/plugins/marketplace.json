@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "markdown-review",
+      "name": "agent-review",
       "source": {
         "source": "local",
-        "path": "./plugins/markdown-review"
+        "path": "./plugins/agent-review"
       },
       "policy": {
         "installation": "INSTALLED_BY_DEFAULT",
