@@ -1,7 +1,7 @@
 ---
 name: review-markdown
 description:
-  Review a user-specified scope in explicitly named Markdown files for correctness, clarity, structure, grammar,
+  Review user-selected content in explicitly named Markdown files for correctness, clarity, structure, grammar,
   consistency, and examples. When a target is an AI prompt written in Markdown or a `SKILL.md` file, also review its
   instruction design, safety, metadata consistency, and operational behavior. Use only when the user explicitly invokes
   `$review-markdown` or asks to use the review-markdown skill and provides one or more exact Markdown file paths and a
@@ -11,10 +11,11 @@ description:
 # Inputs
 
 - Require one or more existing Markdown file paths. Targets may be ordinary Markdown, AI prompts written in Markdown, or
-  `SKILL.md` files. If a target is missing, ambiguous, or a non-Markdown file, stop and ask for the exact path of each
-  invalid target before continuing.
-- Require the user to state a review scope, such as the complete current files, uncommitted changes, a commit or commit
-  range, or named sections or lines. If the scope is missing or ambiguous, stop and ask the user to specify it.
+  `SKILL.md` files. If a target is missing or ambiguous, stop and ask the user to clarify or provide its exact path. If
+  a target is a non-Markdown file, stop and ask for an exact Markdown file path instead.
+- Require the user to state a review scope, such as the complete current contents of each file, uncommitted changes, a
+  commit or commit range, or named sections or lines. If the scope is missing or ambiguous, stop and ask the user to
+  specify it.
 - Interpret reasonable scope descriptions according to the user's intent. Apply a shared scope to every target and honor
   target-specific scopes when provided.
 
@@ -31,7 +32,7 @@ description:
 - Do not check Markdown formatting, syntax validity, or rendering compatibility. Defer those checks to the repository's
   formatter, linter, or build toolchain.
 - Do not run builds, tests, live model inference, link verification, or web browsing unless the user explicitly requests
-  the relevant check.
+  one of those checks.
 
 # Workflow
 
@@ -41,7 +42,7 @@ description:
    other target that defines reusable skill behavior. A skill can also be a prompt, so content, prompt, and skill
    reviews can all apply to one target. When uncertain, apply the relevant prompt or skill review so potential issues
    are not skipped.
-3. Perform every applicable review for each target with content in scope.
+3. Perform every applicable review for each target that has content in scope.
 4. Report actionable findings in severity order within each target section. State explicitly when a reviewed target has
    no findings.
 
@@ -50,8 +51,7 @@ description:
 Check every reviewed target for:
 
 - typos, grammar, punctuation, awkward wording, unclear references, and terminology or tone inconsistencies;
-- accurate and internally consistent examples, commands, code, names, and claims when they can be verified from the
-  repository;
+- errors or inconsistencies in examples, commands, code, names, and claims that can be verified against the repository;
 - contradictions, redundancy, missing context, misleading emphasis, and organization that obscures the document's
   purpose;
 - content accessibility issues such as unhelpful link text or missing image descriptions.
@@ -70,14 +70,16 @@ For a prompt, additionally check:
 
 For a skill, additionally check:
 
-- whether `name`, directory naming, and trigger-oriented `description` agree and accurately cover intended use cases;
+- whether `name` and the directory name agree, and whether the trigger-oriented `description` accurately covers the
+  intended use cases;
 - whether instructions are imperative, actionable, correctly ordered, and compatible with the tools and permissions they
   require;
 - whether scope limits, mutation rules, safety boundaries, fallbacks, and completion criteria are explicit where needed;
-- whether referenced scripts, assets, and references exist, use correct relative paths, and are loaded only when needed;
+- whether referenced scripts, assets, and reference files exist, use correct relative paths, and are loaded only when
+  needed;
 - whether the skill stays concise, avoids duplicated guidance, and uses progressive disclosure for detailed material;
-- whether `agents/openai.yaml` and any packaging metadata remain consistent with the skill and are not stale relative to
-  repository contents when present and relevant to the selected changes.
+- whether `agents/openai.yaml` and any packaging metadata, when present and relevant to the selected scope, remain
+  consistent with the skill and up to date with the repository contents.
 
 By default, limit metadata review to consistency and staleness within the repository; do not claim compliance with an
 external schema. If the user explicitly requests full schema validation, look up the latest authoritative schema before
@@ -106,16 +108,17 @@ Begin the report with the named files, per-target review scopes, and applicable 
 to uncommitted changes, identify targets without uncommitted changes as not reviewed. Then report findings for each
 reviewed target in a section.
 
-For each finding, provide the severity (`Critical`, `High`, `Medium`, or `Low`), a concise title, the exact file and
-line or line range in the updated version, the problematic text or location, the problem, its impact, and a
-recommendation. If deleted content should be restored, cite the updated-file line where the content should be inserted.
+For each finding, provide the severity (`Critical`, `High`, `Medium`, or `Low`), a concise title, the exact file path
+and line number or line range in the updated version, the problematic text or location, the problem, its impact, and a
+recommendation. If deleted content should be restored, cite the line in the updated file where the content should be
+inserted.
 
 End with a `Not Reviewed` section that lists checks the user might reasonably expect but that were not performed. Always
 disclose that Markdown formatting, syntax validity, and rendering compatibility were deferred to the repository
 toolchain. Unless full metadata schema validation was explicitly requested and completed, also disclose that metadata
-was checked only for repository consistency and staleness. Add other material omissions, such as link resolution, tests,
-or live model inference, when relevant. Keep unresolved questions within the applicable target section and separate from
-findings.
+was checked only for repository consistency and staleness. Add other material omissions, such as link verification,
+tests, or live model inference, when relevant. Keep unresolved questions within the applicable target section and
+separate from findings.
 
 If the report is written to a file, respond with its path and a concise finding summary after writing it. Do not repeat
 the complete report in the response. Otherwise, return the complete report in the requested output mode.
