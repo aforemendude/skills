@@ -4,7 +4,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Prompt Review** (`prompt-review`) — reviews recent changes in explicitly named Markdown inference prompt files for correctness, safety, clarity, and consistency.
+- **Prompt Review** (`prompt-review`) — reviews recent changes in explicitly named Markdown inference prompt files for
+  correctness, safety, clarity, and consistency.
 
 ## Add the marketplace to Codex
 
@@ -65,7 +66,9 @@ To add another plugin:
 
 1. Create `plugins/<plugin-name>/.codex-plugin/plugin.json`.
 2. Place its skills under `plugins/<plugin-name>/skills/`.
-3. Append its entry to `.agents/plugins/marketplace.json`, keeping `source.path` relative to the repository root (for example, `./plugins/<plugin-name>`).
+3. Append its entry to `.agents/plugins/marketplace.json`, keeping `source.path` relative to the repository root (for
+   example, `./plugins/<plugin-name>`).
 4. Validate the plugin before publishing it.
 
-See the [Codex plugin documentation](https://learn.chatgpt.com/docs/build-plugins) for plugin manifest and marketplace details.
+See the [Codex plugin documentation](https://learn.chatgpt.com/docs/build-plugins) for plugin manifest and marketplace
+details.

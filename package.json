@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "@aforemendude/prettier-plugin-wrap-comments": "1.0.6",
+    "prettier": "3.9.4"
+  },
+  "engines": {
+    "node": ">=24.18.0"
+  },
+  "name": "aforemendude-skills",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "version": "1.0.0"
+}

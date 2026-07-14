@@ -8,11 +8,7 @@
   },
   "homepage": "https://github.com/aforemendude/skills",
   "repository": "https://github.com/aforemendude/skills",
-  "keywords": [
-    "prompts",
-    "review",
-    "markdown"
-  ],
+  "keywords": ["prompts", "review", "markdown"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Prompt Review",
@@ -20,11 +16,7 @@
     "longDescription": "Review recent changes in named Markdown inference prompt files for correctness, safety, clarity, and consistency.",
     "developerName": "aforemendude",
     "category": "Productivity",
-    "capabilities": [
-      "Read"
-    ],
-    "defaultPrompt": [
-      "Use $prompt-review to review server/prompts/example.md."
-    ]
+    "capabilities": ["Read"],
+    "defaultPrompt": ["What does $prompt-review do?"]
   }
 }
