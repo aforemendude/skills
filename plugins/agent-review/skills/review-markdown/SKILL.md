@@ -38,7 +38,7 @@ description:
 
 # Workflow
 
-1. Confirm the targets and establish the review baseline.
+1. Confirm the targets, establish the review baseline, and resolve a unique report path.
 2. Classify every `SKILL.md` target as a skill. Classify every other target from its operative content: a prompt when it
    is intended to instruct an AI model, a skill when it defines reusable skill behavior, and ordinary Markdown
    otherwise. When uncertain, apply the relevant prompt or skill review so potential issues are not skipped.
@@ -99,9 +99,15 @@ Classify editorial defects as `Low` unless they materially change meaning or beh
 
 # Outputs
 
-Begin with the named files, per-target review baselines, and classifications. Under an uncommitted-changes baseline,
-identify targets without uncommitted changes as not reviewed. Then report findings for each reviewed target in a
-section.
+By default, write the complete review to a Markdown file. Honor an explicit output path or output mode when the user
+provides one. Otherwise, write it in the current working directory as `MARKDOWN_REVIEW.md`. If that path already exists,
+preserve it and use `MARKDOWN_REVIEW_<TIMESTAMP>.md`, where `<TIMESTAMP>` is the current local time in
+`YYYY_MM_DD_HH_MM_SS` format. Never overwrite an existing report; choose a new timestamp if the timestamped path also
+exists.
+
+Begin the report with the named files, per-target review baselines, and classifications. Under an uncommitted-changes
+baseline, identify targets without uncommitted changes as not reviewed. Then report findings for each reviewed target in
+a section.
 
 For each finding, provide the severity (`Critical`, `High`, `Medium`, or `Low`), a concise title, the exact file and
 line or line range in the updated version, the problematic text or location, the problem, its impact, and a
@@ -113,3 +119,6 @@ toolchain. Unless full metadata schema validation was explicitly requested and c
 was checked only for repository consistency and staleness. Add other material omissions, such as link resolution, tests,
 or live model inference, when relevant. Keep unresolved questions within the applicable target section and separate from
 findings.
+
+After writing the report, respond with its path and a concise finding summary. Do not repeat the complete report in the
+response unless the user asks for it.
