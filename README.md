@@ -6,8 +6,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 - **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
   and clarity, with additional checks for prompts and skills.
-- **Fix Tests & Styles** (`fix-tests-styles`) — audits and fixes CSS ownership, unused CSS, unit test ownership, and
-  unit test coverage across repository packages.
+- **Agent Fix** (`agent-fix`) — audits and fixes CSS ownership, unused CSS, unit test ownership, and unit test coverage
+  across repository packages.
 
 ## Add the marketplace to Codex
 
@@ -27,7 +27,7 @@ Then install a plugin from the marketplace:
 
 ```bash
 codex plugin add agent-review@aforemendude-skills
-codex plugin add fix-tests-styles@aforemendude-skills
+codex plugin add agent-fix@aforemendude-skills
 ```
 
 Start a new Codex session after installation so the plugin's skills are loaded.
@@ -63,7 +63,7 @@ codex plugin marketplace remove aforemendude-skills
     │   └── skills/review-markdown/
     │       ├── SKILL.md
     │       └── agents/openai.yaml
-    └── fix-tests-styles/
+    └── agent-fix/
         ├── .codex-plugin/plugin.json
         └── skills/fix-tests-styles/
             ├── SKILL.md

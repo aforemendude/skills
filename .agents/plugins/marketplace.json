@@ -17,10 +17,10 @@
       "category": "Productivity"
     },
     {
-      "name": "fix-tests-styles",
+      "name": "agent-fix",
       "source": {
         "source": "local",
-        "path": "./plugins/fix-tests-styles"
+        "path": "./plugins/agent-fix"
       },
       "policy": {
         "installation": "AVAILABLE",

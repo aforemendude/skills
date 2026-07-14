@@ -1,5 +1,5 @@
 {
-  "name": "fix-tests-styles",
+  "name": "agent-fix",
   "version": "0.1.0",
   "description": "Audit and fix CSS ownership, unused CSS, unit test ownership, and unit test coverage across repository packages.",
   "author": {
@@ -11,7 +11,7 @@
   "keywords": ["css", "unit-tests", "coverage", "maintenance"],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Fix Tests & Styles",
+    "displayName": "Agent Fix",
     "shortDescription": "Fix CSS ownership and unit test coverage",
     "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak test coverage across repository packages.",
     "developerName": "aforemendude",
