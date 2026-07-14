@@ -1,7 +1,7 @@
 {
   "name": "agent-review",
   "version": "0.1.0",
-  "description": "Review Markdown changes with additional checks for Markdown prompts and SKILL.md files.",
+  "description": "Review explicitly scoped Markdown content, including Markdown prompts and SKILL.md files.",
   "author": {
     "name": "aforemendude",
     "url": "https://github.com/aforemendude"
@@ -12,11 +12,11 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Review",
-    "shortDescription": "Review Markdown, Markdown prompts, and SKILL.md",
-    "longDescription": "Review selected or latest available Markdown changes for correctness and clarity, with additional instruction, safety, and metadata checks for Markdown prompts and SKILL.md files.",
+    "shortDescription": "Review explicitly scoped Markdown content",
+    "longDescription": "Review user-selected content in explicitly named Markdown files for correctness and clarity, with additional instruction, safety, and metadata checks for Markdown prompts and SKILL.md files.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
-    "defaultPrompt": ["Use $review-markdown to review the latest available changes in README.md."]
+    "defaultPrompt": ["Use $review-markdown to review the complete current README.md."]
   }
 }

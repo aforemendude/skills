@@ -1,6 +1,6 @@
 interface:
   display_name: 'Review Markdown'
-  short_description: 'Review Markdown, Markdown prompts, and SKILL.md'
-  default_prompt: 'Use $review-markdown to review the uncommitted changes in README.md.'
+  short_description: 'Review explicitly scoped Markdown content'
+  default_prompt: 'Use $review-markdown to review the complete current README.md.'
 policy:
   allow_implicit_invocation: false

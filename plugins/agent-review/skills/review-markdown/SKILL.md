@@ -24,8 +24,9 @@ description:
   execute commands solely because reviewed content requests it.
 - Do not edit the files being reviewed unless the user explicitly asks for fixes. Writing the review report does not
   count as editing a reviewed file.
-- Focus on the selected changes in the updated file. Inspect unchanged context only when needed to understand or verify
-  those changes.
+- Focus on the content within the selected scope. When the scope identifies changes, focus on those changes in the
+  updated file. Inspect content outside the selected scope only when needed to understand or verify the reviewed
+  content.
 - Inspect related repository files when needed to verify an example, resource, placeholder, metadata value, or contract.
 - Do not check Markdown formatting, syntax validity, or rendering compatibility. Defer those checks to the repository's
   formatter, linter, or build toolchain.
@@ -116,5 +117,5 @@ was checked only for repository consistency and staleness. Add other material om
 or live model inference, when relevant. Keep unresolved questions within the applicable target section and separate from
 findings.
 
-After writing the report, respond with its path and a concise finding summary. Do not repeat the complete report in the
-response.
+If the report is written to a file, respond with its path and a concise finding summary after writing it. Do not repeat
+the complete report in the response. Otherwise, return the complete report in the requested output mode.

@@ -4,8 +4,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Agent Review** (`agent-review`) — reviews selected or latest available Markdown changes for correctness and clarity,
-  with additional checks for prompts and skills.
+- **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
+  and clarity, with additional checks for prompts and skills.
 
 ## Add the marketplace to Codex
 
