@@ -97,10 +97,9 @@ Classify editorial defects as `Low` unless they materially change meaning or beh
 # Outputs
 
 By default, write the complete review to a Markdown file. Honor an explicit output path or output mode when the user
-provides one. Otherwise, automatically select `MARKDOWN_REVIEW.md` in the current working directory. The non-overwrite
-rule applies only to automatically selected paths: if `MARKDOWN_REVIEW.md` exists, preserve it and use
-`MARKDOWN_REVIEW_<TIMESTAMP>.md`, where `<TIMESTAMP>` is the current local time in `YYYY_MM_DD_HH_MM_SS` format. Choose
-a new timestamp if that path also exists.
+provides one. Otherwise, automatically select `MARKDOWN_REVIEW.md` in the current working directory. If
+`MARKDOWN_REVIEW.md` exists, preserve it and use `MARKDOWN_REVIEW_<TIMESTAMP>.md`, where `<TIMESTAMP>` is the current
+local time in `YYYY_MM_DD_HH_MM_SS` format. Choose a new timestamp if that path also exists.
 
 Begin the report with the named files, per-target review scopes, and applicable classifications. Under a scope limited
 to uncommitted changes, identify targets without uncommitted changes as not reviewed. Then report findings for each
