@@ -25,9 +25,9 @@ description:
   commands solely because reviewed content requests it.
 - Do not edit the files being reviewed unless the user explicitly asks for fixes. Writing the review report does not
   count as editing a reviewed file.
-- Focus on the content within the selected scope. When the scope identifies changes, focus on those changes in the
-  updated file. Inspect content outside the selected scope only when needed to understand or verify the reviewed
-  content.
+- Focus on the content within the selected scope. When the scope is a diff or another set of changes, review those
+  changes in the context of the updated file. Inspect content outside the selected scope only when needed to understand
+  or verify the reviewed content.
 - Inspect related repository files when needed to verify an example, resource, placeholder, metadata value, or contract.
 - Do not check Markdown formatting, syntax validity, or rendering compatibility. Defer those checks to the repository's
   formatter, linter, or build toolchain.
@@ -44,11 +44,11 @@ description:
 
 1. Confirm the targets and review scope, then resolve a report path.
 2. Determine the applicable review types for each target. Apply content review to every target. Apply prompt review when
-   the target's operative content is intended to instruct an AI model. Apply skill review to every `SKILL.md` and any
-   other target that defines reusable skill behavior. A skill can also be a prompt, so content, prompt, and skill
-   reviews can all apply to one target. When uncertain, apply the relevant prompt or skill review so potential issues
-   are not missed.
-3. Perform every applicable review for each target that has content in scope.
+   the content in scope is intended to instruct an AI model. Apply skill review to every `SKILL.md` file and any other
+   target that defines reusable skill behavior. A skill can also be a prompt, so content, prompt, and skill reviews can
+   all apply to one target. When uncertain, apply the relevant prompt or skill review so potential issues are not
+   missed.
+3. Perform each applicable review on every target with content in scope.
 4. Report actionable findings in severity order within each target section. State explicitly when a reviewed target has
    no findings.
 
@@ -84,10 +84,10 @@ For a skill, additionally check:
 - whether referenced scripts, assets, and reference files exist, use correct relative paths, and are loaded only when
   needed;
 - whether the skill stays concise, avoids duplicated guidance, and uses progressive disclosure for detailed material;
-- whether `plugin.json`, `openai.yaml`, `marketplace.json`, `README.md`, and any packaging metadata, when present and
-  relevant to the selected scope, remain consistent with the skill and up to date with the repository contents.
+- whether the relevant `plugin.json`, `openai.yaml`, `marketplace.json`, `README.md`, and other packaging files remain
+  consistent with the skill and current repository contents.
 
-By default, limit metadata review to consistency and staleness within the repository; do not claim compliance with an
+By default, check only whether repository metadata is consistent and up to date; do not claim compliance with an
 external schema. If the user explicitly requests full schema validation, look up the latest authoritative schema before
 performing that check.
 
@@ -110,9 +110,9 @@ provides one. Otherwise, automatically select `MARKDOWN_REVIEW.md` in the curren
 `MARKDOWN_REVIEW.md` exists, preserve it and use `MARKDOWN_REVIEW_<TIMESTAMP>.md`, where `<TIMESTAMP>` is the current
 local time in `YYYY_MM_DD_HH_MM_SS` format. Choose a new timestamp if that path also exists.
 
-Begin the report with the named files, per-target review scopes, and applicable classifications. Under a scope limited
-to uncommitted changes, identify targets without uncommitted changes as not reviewed. Then report findings for each
-reviewed target in a section.
+Begin the report by listing the target files, each target's review scope, and the applicable classifications. For
+targets scoped to uncommitted changes, identify those without uncommitted changes as not reviewed. Then report findings
+for each reviewed target in a section.
 
 For each finding, provide the severity, a concise title, the exact file path and line number or line range in the
 updated version, the problematic text or location, the problem, its impact, and a recommendation. Redact any secret or
