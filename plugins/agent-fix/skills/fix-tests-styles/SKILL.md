@@ -48,7 +48,7 @@ description:
 
 # Workflow
 
-1. Inspect the worktree before editing. If there are any uncommitted changes, stop and ask the user to commit or stash
+1. Inspect the worktree before starting. If there are any uncommitted changes, stop and ask the user to commit or stash
    those changes.
 2. Inventory the relevant CSS, source, and test files in scope. Identify the repository's application or package
    boundaries, established stylesheet and test conventions, and documented build and test commands.
@@ -56,10 +56,9 @@ description:
    available. Do not install, update, or repair packages. If any required package or tool is missing, stop immediately
    and tell the user what is missing and which command or manifest requires it.
 4. Run the relevant build and test commands to establish a clean baseline. Run commands one at a time and stop at the
-   first failure, even when the failure appears unrelated to the requested work or could be fixed within the allowed
-   files. Do not edit files to repair a baseline failure. Report the failed command and concise failure details to the
-   user. If an applicable build or test command cannot be identified or run reliably, stop and explain why the baseline
-   cannot be established.
+   first failure, do not edit files to repair a baseline failure. Report the failed command and concise failure details
+   to the user. If an applicable build or test command cannot be identified or run reliably, stop and explain why the
+   baseline cannot be established.
 5. Compare the repository's established CSS and test architecture with the rules in this skill. If they are drastically
    different, stop immediately and report the conflicting conventions, affected scope, and migration that would
    otherwise be required.
