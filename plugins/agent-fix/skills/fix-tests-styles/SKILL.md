@@ -21,9 +21,11 @@ description:
 - In fix mode, limit edits to stylesheets, unit test files, and production-file imports or references required to move
   or remove styles without changing behavior.
 - Treat class-name renames and source-ownership moves as report-only unless the user explicitly requests the
-  corresponding fix. A general request to fix styles and unit tests does not provide that authorization. When
-  authorized, perform the rename or move and update every affected production-file and test reference without changing
-  behavior.
+  corresponding fix. A general request to fix styles and unit tests does not provide that authorization. Once
+  authorized, the preceding edit allowlist does not restrict production files: make every production-file edit needed to
+  complete the rename or move, and update every affected production-file and test reference, provided the final behavior
+  does not change. Discover all affected consumers, and obtain confirmation before editing any that fall outside the
+  confirmed scope; do not leave a rename or move partially applied.
 
 # Guardrails
 
@@ -107,6 +109,8 @@ Run all commands one at a time. Do not install, update, or repair packages.
   the source basename. Allow either `.test` before the extension or `Test` appended to the basename, regardless of the
   basename's casing. Examples include `utils.test.ts` or `utilsTest.ts` for `utils.ts`, and `MyComponent.test.tsx` or
   `MyComponentTest.tsx` for `MyComponent.tsx`.
+- Choose either the `.test` or `Test` form within each application or package boundary and use that form consistently
+  throughout the boundary.
 - Preserve the package's choice between colocated tests and a corresponding test directory when it is compatible with
   this ownership rule.
 - Keep the test file's assertions focused on the observable contract of the matching source file.
