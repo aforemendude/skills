@@ -44,15 +44,19 @@ Use the `skill-creator` skill when it is available, then adapt its output to thi
 2. Add `SKILL.md` with only `name` and `description` in its YAML frontmatter. Make `name` match the skill directory.
    Describe both what the skill does and the requests that should trigger it, then write concise, imperative
    instructions in the body.
-3. Add `agents/openai.yaml` with `interface.display_name`, `interface.short_description`, and
-   `interface.default_prompt`. Refer to the skill as `$<skill-name>` in the default prompt. Set
-   `policy.allow_implicit_invocation` deliberately; the current skills use `false` and require explicit invocation.
+3. Add `agents/openai.yaml` with `interface.display_name` and `interface.short_description`. Include
+   `interface.default_prompt` only when a reasonable, ready-to-use default is available; omit it when the invocation
+   requires user-specific inputs that cannot be inferred. When included, refer to the skill as `$<skill-name>` in the
+   default prompt. Set `policy.allow_implicit_invocation` deliberately; the current skills use `false` and require
+   explicit invocation.
 4. Add `scripts/`, `references/`, or `assets/` only when the skill needs them. Link required resources from `SKILL.md`
    with paths relative to that file, and test any executable scripts.
 5. Update the parent `plugin.json` descriptions, capabilities, keywords, or starter prompts when the new skill changes
-   the plugin's advertised behavior. Keep `interface.defaultPrompt` to at most three short prompts.
+   the plugin's advertised behavior. Include `interface.defaultPrompt` only when reasonable, ready-to-use defaults are
+   available; otherwise omit it. Keep it to at most three short prompts when included.
 6. Bump the parent plugin version and update the plugin's description and examples in `README.md` when its user-facing
-   behavior changes.
+   behavior changes. README examples must be complete prompts, though users may need to adapt their concrete paths,
+   scopes, or other values.
 
 Before finishing, confirm that the skill name and metadata agree, every referenced file exists, and the parent manifest
 still describes the combined plugin accurately.

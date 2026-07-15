@@ -1,6 +1,6 @@
 {
   "name": "agent-fix",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Audit and fix CSS ownership, unused CSS, unit test ownership and coverage, and assertion quality within explicitly named files.",
   "author": {
     "name": "aforemendude",
@@ -16,7 +16,6 @@
     "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak assertions within explicitly named files.",
     "developerName": "aforemendude",
     "category": "Productivity",
-    "capabilities": ["Read", "Write"],
-    "defaultPrompt": ["Use $fix-tests-styles to fix [CSS, unit tests, or both] in these files: [file paths]."]
+    "capabilities": ["Read", "Write"]
   }
 }
