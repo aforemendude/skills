@@ -33,6 +33,12 @@ description:
   formatter, linter, or build toolchain.
 - Do not run builds, tests, live model inference, link verification, or web browsing unless the user explicitly requests
   one of those checks.
+- Never reproduce a discovered secret or sensitive personal data anywhere in the report, including titles, excerpts,
+  summaries, and recommendations. Replace the value with a type-specific placeholder such as `[REDACTED API TOKEN]` and
+  cite only its exact file path and line number or range. Do not include partial values or fingerprints that could
+  expose or help recover the original value.
+- When reporting an exposed credential, recommend revoking or rotating it and removing it from other exposed copies or
+  repository history when applicable.
 
 # Workflow
 
@@ -109,8 +115,10 @@ to uncommitted changes, identify targets without uncommitted changes as not revi
 reviewed target in a section.
 
 For each finding, provide the severity, a concise title, the exact file path and line number or line range in the
-updated version, the problematic text or location, the problem, its impact, and a recommendation. If deleted content
-should be restored, cite the line in the updated file where the content should be inserted.
+updated version, the problematic text or location, the problem, its impact, and a recommendation. Redact any secret or
+sensitive personal data from the problematic text as required above; use the file-and-line reference as evidence instead
+of reproducing the value. If deleted content should be restored, cite the line in the updated file where the content
+should be inserted.
 
 End with a section that lists checks the user might reasonably expect but that were not performed. Always disclose that
 Markdown formatting, syntax validity, and rendering compatibility were deferred to the repository toolchain. Unless full

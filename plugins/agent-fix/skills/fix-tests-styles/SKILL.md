@@ -9,13 +9,16 @@ description:
 
 Determine whether the user requested a review or fixes and whether the request covers CSS, unit tests, or both. Do not
 edit files during a review, and do not work on a category the user did not request. If the operation is unspecified,
-default to fixes; if the category is unspecified, default to both CSS and unit tests. These defaults do not authorize
-fixes for CSS naming or source-ownership issues, which remain report-only unless explicitly requested as described
-below.
+default to fixes. Before inspecting or editing, require an explicit scope that names each file to review or permit
+changes to and selects CSS, unit tests, or both. If either the files or category are missing, stop and ask the user to
+provide them. Do not infer both categories or a repository-wide scope. These requirements apply even when the user
+explicitly invokes this skill. They do not authorize fixes for CSS naming or source-ownership issues, which remain
+report-only unless explicitly requested as described below.
 
-Cover all files in the requested scope. If the user does not specify a scope, inspect the entire repository. Apply the
-rules within each application or package boundary, and exclude dependencies, vendored code, and generated-output
-directories such as `node_modules`, `coverage`, `dist`, and `build`.
+Cover only the explicitly named files. Inspect directly related files only as needed to verify ownership, usage, and
+behavior for those named files; do not expand the review or edit scope without the user's confirmation. Apply the rules
+within each application or package boundary, and exclude dependencies, vendored code, and generated-output directories
+such as `node_modules`, `coverage`, `dist`, and `build`.
 
 Treat the rules in this skill as the required target conventions. Use repository conventions for framework-specific
 syntax and details only when they are compatible with these rules. If the repository follows a drastically different
