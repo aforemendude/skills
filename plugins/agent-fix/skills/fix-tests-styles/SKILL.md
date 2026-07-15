@@ -7,10 +7,10 @@ description:
 
 # Input
 
-- Determine whether the user requested a review or fixes. Default to fixes when the operation is unspecified.
+- Require the user to select review or fix mode.
 - Require the user to select CSS, unit tests, or both.
 - Require the user to name every file to review or permit changes to before inspecting or editing.
-- If the files or category are missing, stop and ask the user to provide them.
+- If the mode, files, or category are missing, stop and ask the user to provide them.
 - Do not infer both categories or a repository-wide scope. Apply these requirements even when the user explicitly
   invokes this skill.
 
