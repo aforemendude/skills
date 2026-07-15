@@ -109,8 +109,10 @@ description:
 
 ### Test Ownership and Scope
 
-- Keep each unit test next to the matching source file or in the corresponding test directory with the same basename,
-  such as `utils.test.ts` for `utils.ts` or `MyComponent.test.tsx` for `MyComponent.tsx`.
+- Keep each unit test next to the matching source file or in the corresponding test directory with a name derived from
+  the source basename. Allow either `.test` before the extension or `Test` appended to the basename, regardless of the
+  basename's casing. Examples include `utils.test.ts` or `utilsTest.ts` for `utils.ts`, and `MyComponent.test.tsx` or
+  `MyComponentTest.tsx` for `MyComponent.tsx`.
 - Preserve the package's choice between colocated tests and a corresponding test directory when it is compatible with
   this ownership rule.
 - Allow a test file to import shared setup, fixtures, types, and mocked dependencies.
@@ -137,8 +139,9 @@ description:
 
 ### Required Coverage
 
-- Give behavior-bearing source files direct unit coverage in a same-basename test file. Exempt pure type declarations,
-  simple constant-only modules, test setup and utilities, generated files, and declarative barrel modules.
+- Give behavior-bearing source files direct unit coverage in a matching test file named with one of the ownership forms
+  above. Exempt pure type declarations, simple constant-only modules, test setup and utilities, generated files, and
+  declarative barrel modules.
 - Classify a module as constant-only when it contains only exported literals or static configuration without branching,
   functions, derived values, environment reads, side effects, or runtime formatting.
 - Do not add empty or assertion-free tests merely to create a matching filename.
