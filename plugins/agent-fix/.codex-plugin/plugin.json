@@ -1,6 +1,6 @@
 {
   "name": "agent-fix",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Review or fix style quality and unit test quality, including related test support and configuration, within a user-specified scope.",
   "author": {
     "name": "aforemendude",
