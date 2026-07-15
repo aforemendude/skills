@@ -33,6 +33,9 @@ installing and using the published plugins.
 Use lowercase hyphen-case for plugin and skill directory names. A plugin directory name, its manifest `name`, and its
 marketplace entry `name` must match.
 
+Keep plugins and skills sorted alphabetically by name wherever they are listed, including the marketplace catalog,
+manifest arrays, README sections, installation commands, and example prompts.
+
 ## Create a skill
 
 Use the `skill-creator` skill when it is available, then adapt its output to this repository's structure.
@@ -63,9 +66,9 @@ Use the `plugin-creator` skill when it is available. Target this repository's `p
    template. Start a new plugin at version `0.1.0` and provide real values for its description, author, keywords,
    `skills`, and required `interface` metadata. Keep paths relative to the plugin root and beginning with `./`.
 2. Add at least one skill under `plugins/<plugin-name>/skills/` by following the skill workflow above.
-3. Append an entry to `.agents/plugins/marketplace.json`. Use `./plugins/<plugin-name>` for `source.path`, include both
-   policy fields and a category, and default new plugins to `AVAILABLE` unless they are intentionally installed by
-   default:
+3. Add an entry to `.agents/plugins/marketplace.json` in alphabetical order. Use `./plugins/<plugin-name>` for
+   `source.path`, include both policy fields and a category, and default new plugins to `AVAILABLE` unless they are
+   intentionally installed by default:
 
    ```json
    {

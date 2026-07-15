@@ -26,8 +26,8 @@ codex plugin marketplace list
 Then install a plugin from the marketplace:
 
 ```bash
-codex plugin add agent-review@aforemendude-skills
 codex plugin add agent-fix@aforemendude-skills
+codex plugin add agent-review@aforemendude-skills
 ```
 
 Start a new Codex session after installation so the plugin's skills are loaded.
@@ -54,16 +54,6 @@ codex plugin marketplace remove aforemendude-skills
 
 ## Example prompts
 
-### Agent Review
-
-```text
-Use $review-markdown to review the complete contents of README.md.
-```
-
-```text
-Use $review-markdown to review the uncommitted changes in plugins/agent-review/skills/review-markdown/SKILL.md.
-```
-
 ### Agent Fix
 
 ```text
@@ -72,4 +62,14 @@ Use $fix-tests-styles to review CSS and unit tests across this repository.
 
 ```text
 Use $fix-tests-styles to fix CSS ownership, unit test coverage, and assertion quality in packages/dashboard.
+```
+
+### Agent Review
+
+```text
+Use $review-markdown to review the complete contents of README.md.
+```
+
+```text
+Use $review-markdown to review the uncommitted changes in plugins/agent-review/skills/review-markdown/SKILL.md.
 ```
