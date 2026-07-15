@@ -64,6 +64,9 @@ codex plugin marketplace remove aforemendude-skills
 `$fix-tests-styles` requires two inputs: a mode (`review` or `fix`) and an unambiguous scope such as files, directories,
 packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
 
+Use `$fix-tests-styles` only in trusted repositories. The skill treats repository content as trusted and runs the
+repository's existing build and test commands, which may execute repository-controlled code.
+
 Review a package without changing files:
 
 ```text
