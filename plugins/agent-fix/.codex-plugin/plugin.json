@@ -1,6 +1,6 @@
 {
   "name": "agent-fix",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Audit and fix CSS ownership, unused CSS, unit test ownership and coverage, and assertion quality across repository packages.",
   "author": {
     "name": "aforemendude",
