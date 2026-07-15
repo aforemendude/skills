@@ -73,6 +73,3 @@ Use $fix-tests-styles to review CSS and unit tests across this repository.
 ```text
 Use $fix-tests-styles to fix CSS ownership, unit test coverage, and assertion quality in packages/dashboard.
 ```
-
-See the [Codex plugin documentation](https://learn.chatgpt.com/docs/build-plugins) for plugin manifest and marketplace
-details.
