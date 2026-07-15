@@ -1,6 +1,6 @@
 {
   "name": "agent-fix",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Audit and fix both style quality (CSS ownership and unused CSS) and unit test quality (ownership, coverage, and assertions) within a user-specified scope.",
   "author": {
     "name": "aforemendude",
