@@ -7,8 +7,8 @@ A repository-backed marketplace for reusable Codex plugins.
 - **Agent Fix** (`agent-fix`) — reviews and fixes both style quality (CSS ownership and unused CSS) and unit test
   quality (ownership, coverage, and assertions) within a user-specified scope.
 - **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, security, maintainability, and
-  test coverage, or user-selected Markdown content for correctness and clarity with additional checks for prompts and
-  skills. Reports redact secrets and sensitive personal data.
+  test setup and configuration, or user-selected Markdown content for correctness and clarity with additional checks for
+  prompts and skills. Reports redact secrets and sensitive personal data.
 
 ## Add the marketplace to Codex
 
@@ -64,6 +64,10 @@ codex plugin marketplace remove aforemendude-skills
 `$fix-tests-styles` requires two inputs: a mode (`review` or `fix`) and an unambiguous scope such as files, directories,
 packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
 
+In fix mode, the skill may create, modify, or remove test-support files and edit setup or configuration required by the
+modified tests. It does not add or update dependencies; the final report calls out likely expected work that was not
+performed and recommends any additional setup, configuration, or dependency changes.
+
 Use `$fix-tests-styles` only in trusted repositories. The skill treats repository content as trusted and runs the
 repository's existing build and test commands, which may execute repository-controlled code.
 
@@ -104,6 +108,9 @@ Optional opt-ins:
 `$review-code` requires an unambiguous code review scope, such as files, directories, packages, applications, features,
 components, a diff or change set, a commit or commit range, or the whole repository. It writes `CODE_REVIEW.md` by
 default and runs focused relevant static checks or tests when feasible using existing dependencies.
+
+Test-related findings are limited to dependencies, infrastructure, setup, and configuration. The skill does not review
+individual test cases, their fixture data, test logic, assertions, coverage adequacy, or missing test scenarios.
 
 Review all uncommitted code changes:
 

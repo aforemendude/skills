@@ -2,9 +2,9 @@
 name: review-code
 description:
   Review user-selected code within an explicit scope for correctness, reliability, security, performance,
-  maintainability, architecture, and test coverage. Use only when the user explicitly invokes `$review-code` or asks to
-  use the review-code skill and provides a code review scope such as files, directories, packages, applications,
-  features, components, a diff or change set, or the whole repository.
+  maintainability, architecture, and test setup and configuration. Use only when the user explicitly invokes
+  `$review-code` or asks to use the review-code skill and provides a code review scope such as files, directories,
+  packages, applications, features, components, a diff or change set, or the whole repository.
 ---
 
 # Inputs and Scope
@@ -13,10 +13,10 @@ description:
   diff or change set, a commit or commit range, or the whole repository.
 - If the scope is missing or ambiguous, stop and ask the user to provide or clarify it. Do not infer a repository-wide
   scope.
-- Review production code and the tests, configuration, migrations, scripts, or other files needed to understand and
+- Review production code and the configuration, migrations, scripts, test setup, or other files needed to understand and
   verify its behavior. Inspect directly related files outside the selected scope only when necessary to validate a
   finding, and disclose that expansion in the review.
-- Exclude dependencies, vendored code, and generated output unless the user explicitly includes them.
+- Exclude third-party dependency source, vendored code, and generated output unless the user explicitly includes them.
 
 # Guidelines
 
@@ -28,6 +28,12 @@ description:
 - Verify every finding against the current code. Do not repeat findings from existing reports without rechecking them.
 - Prefer actionable findings with concrete user, data, security, reliability, performance, compatibility, or maintenance
   impact. Omit style-only comments unless they create a meaningful risk.
+- Limit test-related findings to dependencies, infrastructure, setup, and configuration. Include missing important test
+  dependencies, incorrect or incompatible runner, environment, transform, or reporting configuration, fragile setup, and
+  awkward or nonstandard practices with concrete impact.
+- Do not review individual test cases, their fixture data, test logic, or assertions, and do not report coverage
+  adequacy or missing test scenarios. Inspect or run tests only as evidence for production behavior and infrastructure
+  findings; do not report defects in the tests themselves.
 - Distinguish verified defects from unresolved questions or risks that depend on assumptions. Do not overstate evidence.
 - Never reproduce a discovered secret or sensitive personal data in the report. Replace it with a type-specific
   placeholder such as `[REDACTED API TOKEN]`, cite only its exact file path and line number or range, and recommend
@@ -37,10 +43,10 @@ description:
 # Workflow
 
 1. Confirm the review scope and resolve the report path or output mode.
-2. Inspect the worktree, applicable repository instructions, project structure, entry points, tests, manifests, build
-   scripts, and nearby documentation before judging the code.
-3. Trace relevant call sites, data flows, state transitions, and shared contracts. Compare behavior with tests,
-   documentation, types, schemas, and established repository conventions where they provide reliable evidence.
+2. Inspect the worktree, applicable repository instructions, project structure, entry points, test dependencies, test
+   setup and configuration, manifests, build scripts, and nearby documentation before judging the code.
+3. Trace relevant call sites, data flows, state transitions, and shared contracts. Compare behavior with documentation,
+   types, schemas, established repository conventions, and test results where they provide reliable evidence.
 4. Review the selected scope for:
    - incorrect logic, broken invariants, unhandled boundaries, race conditions, error-handling gaps, data loss, and
      compatibility regressions;
@@ -49,10 +55,11 @@ description:
    - avoidable latency, repeated work, unbounded resource use, leaks, and scaling risks;
    - architectural coupling, unclear ownership, fragile abstractions, duplication, and maintainability problems with
      concrete impact;
-   - missing, weak, flaky, or misleading tests, especially coverage that would have caught a reported defect; and
+   - missing or incompatible test dependencies and incorrect, fragile, or unnecessarily awkward test infrastructure,
+     setup, or configuration; and
    - user-facing behavior concerns such as accessibility or localization when relevant to the reviewed code.
 5. Verify each candidate finding in current code. Cite exact file paths and current line numbers, explain the impact,
-   and identify a focused recommendation and related testing gap when applicable.
+   and identify a focused recommendation.
 6. Run the most focused relevant static checks or tests when feasible. Do not update snapshots or generated artifacts
    merely to make a check pass. If a relevant check cannot be identified or run, state what was not run and why.
 7. Report actionable findings in severity order. State explicitly when the reviewed scope has no findings, and summarize
@@ -64,9 +71,9 @@ description:
   production outage.
 - `High`: likely exploitable security behavior, common data corruption, severe reliability failure, or a major broken
   workflow.
-- `Medium`: a realistic correctness, edge-case, error-handling, performance, architectural, or testing problem with
-  meaningful impact.
-- `Low`: a limited-impact correctness, maintainability, documentation, or coverage problem.
+- `Medium`: a realistic correctness, edge-case, error-handling, performance, architectural, or test-infrastructure
+  problem with meaningful impact.
+- `Low`: a limited-impact correctness, maintainability, documentation, or test-setup problem.
 
 Classify style-only or editorial defects as `Low` only when they are worth reporting because they create concrete risk.
 
@@ -79,8 +86,8 @@ mode when the user provides one.
 
 Use a report structure suited to the selected scope; no fixed schema is required. Identify the scope and review basis,
 then present findings in severity order. For each finding, provide a concise title, severity, exact file and line
-reference, problem, impact, focused recommendation, and testing gap when relevant. Keep unresolved questions separate
-from findings. End with the checks run and material checks or areas not covered.
+reference, problem, impact, and focused recommendation. Keep unresolved questions separate from findings. End with the
+checks run and material checks or areas not covered.
 
 If there are no findings, say so explicitly without implying the code is defect-free. If the review is written to a
 file, respond with its path, a concise finding summary by severity, and the checks run without repeating the full
