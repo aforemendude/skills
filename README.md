@@ -24,7 +24,8 @@ Verify that Codex knows about it:
 codex plugin marketplace list
 ```
 
-Then install a plugin from the marketplace:
+The marketplace declares both plugins as installed by default, but Codex may not honor that policy. If needed, install
+each plugin manually:
 
 ```bash
 codex plugin add agent-fix@aforemendude-skills
@@ -41,6 +42,7 @@ For marketplace development, clone the repository and register its root director
 git clone git@github.com:aforemendude/skills.git
 cd skills
 codex plugin marketplace add "$PWD"
+codex plugin add agent-fix@aforemendude-skills
 codex plugin add agent-review@aforemendude-skills
 ```
 
