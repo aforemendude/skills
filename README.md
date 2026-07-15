@@ -6,9 +6,9 @@ A repository-backed marketplace for reusable Codex plugins.
 
 - **Agent Fix** (`agent-fix`) — reviews and fixes both style quality (CSS ownership and unused CSS) and unit test
   quality (ownership, coverage, and assertions) within a user-specified scope.
-- **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
-  and clarity, with additional checks for prompts and skills and redaction of secrets and sensitive personal data from
-  reports.
+- **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, security, maintainability, and
+  test coverage, or user-selected Markdown content for correctness and clarity with additional checks for prompts and
+  skills. Reports redact secrets and sensitive personal data.
 
 ## Add the marketplace to Codex
 
@@ -59,6 +59,8 @@ codex plugin marketplace remove aforemendude-skills
 
 ### Agent Fix
 
+#### `$fix-tests-styles`
+
 `$fix-tests-styles` requires two inputs: a mode (`review` or `fix`) and an unambiguous scope such as files, directories,
 packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
 
@@ -94,8 +96,44 @@ Optional opt-ins:
 
 ### Agent Review
 
+#### `$review-code`
+
+`$review-code` requires an unambiguous code review scope, such as files, directories, packages, applications, features,
+components, a diff or change set, a commit or commit range, or the whole repository. It writes `CODE_REVIEW.md` by
+default and runs focused relevant static checks or tests when feasible using existing dependencies.
+
+Review all uncommitted code changes:
+
+```text
+Use $review-code to review all uncommitted code changes in this repository.
+```
+
+Review a package's current code:
+
+```text
+Use $review-code to review the current code under packages/dashboard.
+```
+
+Optional opt-ins:
+
+- **Apply fixes:** reviewed code is not edited unless the prompt explicitly requests fixes.
+
+  ```text
+  Use $review-code to review the current code under packages/dashboard and fix every finding you can resolve safely.
+  ```
+
+- **Choose the output:** provide a report path or request another output mode instead of the default generated Markdown
+  report.
+
+  ```text
+  Use $review-code to review all uncommitted code changes in this repository and return the complete review in chat
+  instead of writing a report file.
+  ```
+
+#### `$review-markdown`
+
 `$review-markdown` requires one or more exact Markdown file paths and a review scope, such as complete current contents,
-uncommitted changes, a commit or commit range, or named sections or lines.
+uncommitted changes, a commit or commit range, or named sections or lines. It writes `MARKDOWN_REVIEW.md` by default.
 
 Review one complete file:
 
@@ -111,7 +149,7 @@ Use $review-markdown to review the uncommitted changes in plugins/agent-review/s
 
 Optional opt-ins:
 
-- **Apply fixes:** reviewed files are not edited unless the prompt explicitly requests fixes.
+- **Apply fixes:** reviewed Markdown files are not edited unless the prompt explicitly requests fixes.
 
   ```text
   Use $review-markdown to review the complete contents of docs/setup.md and fix every finding you can resolve safely.
@@ -125,8 +163,8 @@ Optional opt-ins:
   writing a report file.
   ```
 
-- **Run additional checks:** link verification, web browsing, builds, tests, and live model inference run only when
-  explicitly requested.
+- **Run additional Markdown checks:** `$review-markdown` runs link verification, web browsing, builds, tests, and live
+  model inference only when explicitly requested.
 
   ```text
   Use $review-markdown to review the complete contents of docs/prompt.md. Also verify its links, browse authoritative
