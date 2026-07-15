@@ -114,8 +114,8 @@ Run all commands one at a time. Do not install, update, or repair packages.
 - Move direct tests of independently testable helpers, child components, sibling components, or utilities into their
   matching test files.
 - Do not move integration assertions merely because the exercised behavior uses a collaborator.
-- Allow behavior-bearing tests to import shared setup, fixtures, pure type declarations, and mocks, but do not create or
-  retain dedicated unit tests for those support files. Remove any such test files in scope.
+- Allow behavior-bearing tests to import shared setup, fixtures, and mocks, but do not create or retain dedicated unit
+  tests for those support files. Remove any such test files in scope.
 
 ### Source Ownership
 
