@@ -187,16 +187,15 @@ Run all commands one at a time. Do not install, update, or repair packages.
 
 # Completion
 
-After making changes, rerun the most focused relevant tests, followed by the applicable build and broader test commands
-used for the baseline. If a test run exposes an issue in an updated unit test, fix that test. Handle exposed production
-defects according to the guardrails.
-
-For fixes, report the files changed, checks run and their results, and unresolved source defects. End with these
-explicit sections:
-
-- List related work the user could reasonably assume was included but was not performed, with the reason and impact.
-  State explicitly when there are no such items.
-- Describe any additional setup or configuration changes and any new or updated dependencies that would improve or
-  complete the work but were not applied. State explicitly when there are no recommendations.
-
-For reviews, list actionable findings with file and line references.
+- After making changes, rerun the most focused relevant tests, followed by the applicable build and broader test
+  commands used for the baseline. If a test run exposes an issue in an updated unit test, fix that test. Handle exposed
+  production defects according to the guardrails.
+- For fixes, keep the final summary concise and exclude information readily available from `git diff`. Report only:
+  - Checks run and their results.
+  - Unresolved source defects, with relevant file and line references.
+  - Related work the user could reasonably assume was included but was not performed, with the reason and impact.
+    Include any refactoring of or into test-support files that was not performed because it would affect files outside
+    the confirmed scope.
+  - Additional setup or configuration changes and new or updated dependencies that would improve or complete the work
+    but were not applied.
+- For reviews, list actionable findings with file and line references.

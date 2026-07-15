@@ -65,8 +65,10 @@ codex plugin marketplace remove aforemendude-skills
 packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
 
 In fix mode, the skill may create, modify, or remove test-support files and edit setup or configuration required by the
-modified tests. It does not add or update dependencies; the final report calls out likely expected work that was not
-performed and recommends any additional setup, configuration, or dependency changes.
+modified tests. It does not add or update dependencies. Its concise final report omits details readily available from
+the diff and instead reports checks, unresolved source defects, likely expected work that was not performed (including
+test-support refactoring blocked by effects outside the confirmed scope), and recommended setup, configuration, or
+dependency changes.
 
 Use `$fix-tests-styles` only in trusted repositories. The skill treats repository content as trusted and runs the
 repository's existing build and test commands, which may execute repository-controlled code.
