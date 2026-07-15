@@ -4,10 +4,10 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
-  and clarity, with additional checks for prompts and skills.
 - **Agent Fix** (`agent-fix`) — reviews and fixes CSS ownership, unused CSS, unit test ownership and coverage, and
   assertion quality across repository packages.
+- **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
+  and clarity, with additional checks for prompts and skills.
 
 ## Add the marketplace to Codex
 
@@ -52,31 +52,27 @@ codex plugin marketplace upgrade aforemendude-skills
 codex plugin marketplace remove aforemendude-skills
 ```
 
-## Marketplace layout
+## Example prompts
+
+### Agent Review
 
 ```text
-.
-├── .agents/plugins/marketplace.json
-└── plugins/
-    ├── agent-review/
-    │   ├── .codex-plugin/plugin.json
-    │   └── skills/review-markdown/
-    │       ├── SKILL.md
-    │       └── agents/openai.yaml
-    └── agent-fix/
-        ├── .codex-plugin/plugin.json
-        └── skills/fix-tests-styles/
-            ├── SKILL.md
-            └── agents/openai.yaml
+Use $review-markdown to review the complete contents of README.md.
 ```
 
-To add another plugin:
+```text
+Use $review-markdown to review the uncommitted changes in plugins/agent-review/skills/review-markdown/SKILL.md.
+```
 
-1. Create `plugins/<plugin-name>/.codex-plugin/plugin.json`.
-2. Place its skills under `plugins/<plugin-name>/skills/`.
-3. Append its entry to `.agents/plugins/marketplace.json`, keeping `source.path` relative to the repository root (for
-   example, `./plugins/<plugin-name>`).
-4. Validate the plugin before publishing it.
+### Agent Fix
+
+```text
+Use $fix-tests-styles to review CSS and unit tests across this repository.
+```
+
+```text
+Use $fix-tests-styles to fix CSS ownership, unit test coverage, and assertion quality in packages/dashboard.
+```
 
 See the [Codex plugin documentation](https://learn.chatgpt.com/docs/build-plugins) for plugin manifest and marketplace
 details.
