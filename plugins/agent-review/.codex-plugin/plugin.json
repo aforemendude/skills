@@ -1,6 +1,6 @@
 {
   "name": "agent-review",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Review selected content in explicitly named Markdown files, including Markdown prompts and SKILL.md files.",
   "author": {
     "name": "aforemendude",

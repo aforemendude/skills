@@ -53,24 +53,89 @@ codex plugin marketplace upgrade aforemendude-skills
 codex plugin marketplace remove aforemendude-skills
 ```
 
-## Example prompts
+## Skills and example prompts
 
 ### Agent Fix
+
+`$fix-tests-styles` requires two inputs: a mode (`review` or `fix`) and an unambiguous scope such as files, directories,
+packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
+
+Review a package without changing files:
 
 ```text
 Use $fix-tests-styles to review styles and unit tests throughout packages/dashboard.
 ```
 
+Fix a component's styles and tests:
+
 ```text
 Use $fix-tests-styles to fix styles and unit tests for the Card component under packages/dashboard/src.
 ```
 
+Optional opt-ins:
+
+- **Class-name renames and source-ownership moves:** these remain report-only unless the prompt explicitly authorizes
+  their corresponding fixes.
+
+  ```text
+  Use $fix-tests-styles to fix styles and unit tests under packages/dashboard/src. Also fix inconsistent class-names
+  and source-ownership problems in that scope.
+  ```
+
+- **Production implementation fixes:** production defects exposed by test updates remain report-only unless separately
+  authorized.
+
+  ```text
+  Use $fix-tests-styles to fix styles and unit tests under packages/dashboard/src/cards. If the test updates expose a
+  production implementation defect in that scope, fix it without changing intended behavior.
+  ```
+
 ### Agent Review
+
+`$review-markdown` requires one or more exact Markdown file paths and a review scope, such as complete current contents,
+uncommitted changes, a commit or commit range, or named sections or lines.
+
+Review one complete file:
 
 ```text
 Use $review-markdown to review the complete contents of README.md.
 ```
 
+Review a skill's uncommitted changes:
+
 ```text
 Use $review-markdown to review the uncommitted changes in plugins/agent-review/skills/review-markdown/SKILL.md.
 ```
+
+Optional opt-ins:
+
+- **Apply fixes:** reviewed files are not edited unless the prompt explicitly requests fixes.
+
+  ```text
+  Use $review-markdown to review the complete contents of docs/setup.md and fix every finding you can resolve safely.
+  ```
+
+- **Choose the output:** provide a report path or request another output mode instead of the default generated Markdown
+  report.
+
+  ```text
+  Use $review-markdown to review the complete contents of README.md and return the complete review in chat instead of
+  writing a report file.
+  ```
+
+- **Run additional checks:** link verification, web browsing, builds, tests, and live model inference run only when
+  explicitly requested.
+
+  ```text
+  Use $review-markdown to review the complete contents of docs/prompt.md. Also verify its links, browse authoritative
+  sources to check its factual claims, run the relevant build and tests, and use live model inference to evaluate the
+  prompt's behavior.
+  ```
+
+- **Validate external metadata schemas:** metadata review otherwise covers only consistency and staleness within the
+  repository.
+
+  ```text
+  Use $review-markdown to review the complete contents of plugins/agent-review/skills/review-markdown/SKILL.md and
+  perform full validation against the latest authoritative metadata schemas.
+  ```
