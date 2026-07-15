@@ -1,23 +1,25 @@
 ---
 name: fix-tests-styles
 description:
-  Review or fix CSS ownership, unused CSS, unit test ownership and coverage, and assertion quality. Use only when the
-  user explicitly invokes `$fix-tests-styles` or asks to use the fix-tests-styles skill for styles, unit tests, or both.
+  Review or fix both style quality (CSS ownership and unused CSS) and unit test quality (ownership, coverage, and
+  assertions) within a user-specified scope. Use only when the user explicitly invokes `$fix-tests-styles` or asks to
+  use the fix-tests-styles skill.
 ---
 
 # Input
 
 - Require the user to select review or fix mode.
-- Require the user to select CSS, unit tests, or both.
-- Require the user to name every file to review or permit changes to before inspecting or editing.
-- If the mode, files, or category are missing, stop and ask the user to provide them.
-- Do not infer both categories or a repository-wide scope. Apply these requirements even when the user explicitly
-  invokes this skill.
+- Require the user to specify a clear scope to review or fix. Accept any unambiguous scope description, including files,
+  directories, packages, applications, features or components, a diff or change set, or the whole repository. Do not
+  require the user to name files explicitly.
+- Always review or fix both CSS and unit tests within that scope.
+- If the mode or scope is missing or ambiguous, stop and ask the user to provide or clarify it.
+- Do not infer a repository-wide scope. Apply these requirements even when the user explicitly invokes this skill.
 
 # Scope
 
-- Work only on the requested categories and explicitly named files. Do not edit files during a review.
-- Inspect directly related files only as needed to verify ownership, usage, and behavior for the named files. Do not
+- Work on both CSS and unit tests within the requested scope. Do not edit files during a review.
+- Inspect directly related files only as needed to verify ownership, usage, and behavior for the requested scope. Do not
   expand the review or edit scope without the user's confirmation.
 - Apply the rules within each application or package boundary.
 - Exclude dependencies, vendored code, and generated-output directories such as `node_modules`, `coverage`, `dist`, and
@@ -62,8 +64,8 @@ description:
 5. Compare the repository's established CSS and test architecture with the rules in this skill. If they are drastically
    different, stop immediately and report the conflicting conventions, affected scope, and migration that would
    otherwise be required.
-6. Apply only the requested CSS rules, test rules, or both. Use static searches and call-site inspection to verify
-   ownership and usage before moving or deleting code.
+6. Apply both the CSS rules and test rules within the requested scope. Use static searches and call-site inspection to
+   verify ownership and usage before moving or deleting code.
 
 ## CSS Rules
 
@@ -85,7 +87,7 @@ description:
   component name.
 - Report inconsistent class names and their references with file and line locations.
 - Do not rename inconsistent classes unless the user explicitly requests a class-naming fix. A general request to fix
-  CSS or both categories is not sufficient.
+  styles and unit tests is not sufficient.
 - When a rename is authorized, update every verified reference while preserving behavior.
 
 ### Unused and Empty Styles
@@ -131,7 +133,7 @@ description:
   are intentionally colocated.
 - Report misplaced source code with file and line locations, and identify the expected owner.
 - Do not move or extract misplaced source code unless the user explicitly requests that source-ownership fix. A general
-  request to fix unit tests or both categories is not sufficient.
+  request to fix styles and unit tests is not sufficient.
 - When a source-ownership fix is authorized, relocate the code and update imports, references, and tests as needed while
   preserving behavior.
 

@@ -1,7 +1,7 @@
 {
   "name": "agent-fix",
-  "version": "1.0.3",
-  "description": "Audit and fix CSS ownership, unused CSS, unit test ownership and coverage, and assertion quality within explicitly named files.",
+  "version": "2.0.0",
+  "description": "Audit and fix both style quality (CSS ownership and unused CSS) and unit test quality (ownership, coverage, and assertions) within a user-specified scope.",
   "author": {
     "name": "aforemendude",
     "url": "https://github.com/aforemendude"
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "Agent Fix",
     "shortDescription": "Fix CSS ownership, test coverage, and assertions",
-    "longDescription": "Audit and fix misplaced or unused CSS, unit test ownership, missing unit tests, and weak assertions within explicitly named files.",
+    "longDescription": "Audit and fix both style quality (misplaced or unused CSS) and unit test quality (ownership, coverage, and assertions) within a user-specified scope.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"]

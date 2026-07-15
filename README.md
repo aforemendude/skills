@@ -4,8 +4,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Agent Fix** (`agent-fix`) — reviews and fixes CSS ownership, unused CSS, unit test ownership and coverage, and
-  assertion quality within explicitly named files.
+- **Agent Fix** (`agent-fix`) — reviews and fixes both style quality (CSS ownership and unused CSS) and unit test
+  quality (ownership, coverage, and assertions) within a user-specified scope.
 - **Agent Review** (`agent-review`) — reviews user-selected content in explicitly named Markdown files for correctness
   and clarity, with additional checks for prompts and skills and redaction of secrets and sensitive personal data from
   reports.
@@ -58,12 +58,11 @@ codex plugin marketplace remove aforemendude-skills
 ### Agent Fix
 
 ```text
-Use $fix-tests-styles to review CSS in packages/dashboard/src/Card.css and packages/dashboard/src/Card.tsx.
+Use $fix-tests-styles to review styles and unit tests throughout packages/dashboard.
 ```
 
 ```text
-Use $fix-tests-styles to fix both CSS and unit tests in packages/dashboard/src/Card.css,
-packages/dashboard/src/Card.tsx, and packages/dashboard/src/Card.test.tsx.
+Use $fix-tests-styles to fix styles and unit tests for the Card component under packages/dashboard/src.
 ```
 
 ### Agent Review

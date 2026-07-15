@@ -1,5 +1,5 @@
 interface:
   display_name: 'Fix Tests & Styles'
-  short_description: 'Fix CSS ownership, test coverage, and assertions'
+  short_description: 'Fix both CSS and unit-test quality'
 policy:
   allow_implicit_invocation: false
