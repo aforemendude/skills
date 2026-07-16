@@ -110,6 +110,9 @@ useful evidence, using existing dependencies only.
 Test-related findings are limited to dependencies, infrastructure, setup, and configuration. The skill does not review
 individual test cases, their fixture data, test logic, assertions, coverage adequacy, or missing test scenarios.
 
+Use `$review-code` only in trusted repositories. The skill treats repository content as trusted and may run the
+repository's existing static checks or tests, which may execute repository-controlled code.
+
 Review the whole repository:
 
 ```text
