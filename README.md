@@ -7,8 +7,9 @@ A repository-backed marketplace for reusable Codex plugins.
 - **Agent Fix** (`agent-fix`) — fixes both style quality (CSS ownership and unused CSS) and unit test quality
   (ownership, coverage, and assertions) within a user-specified scope.
 - **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, security, maintainability, and
-  test setup and configuration, or user-selected Markdown content for correctness and clarity with additional checks for
-  prompts and skills. Reports redact secrets and sensitive personal data.
+  test infrastructure, including dependencies, setup, and configuration, or user-selected Markdown content for
+  correctness and clarity with additional checks for prompts and skills. Reports redact secrets and sensitive personal
+  data.
 
 ## Add the marketplace to Codex
 
@@ -24,15 +25,15 @@ Verify that Codex knows about it:
 codex plugin marketplace list
 ```
 
-The marketplace declares both plugins as installed by default, but Codex may not honor that policy. If needed, install
-each plugin manually:
+The marketplace declares both plugins as installed by default. If either one is not available in your Codex setup,
+install it manually:
 
 ```bash
 codex plugin add agent-fix@aforemendude-skills
 codex plugin add agent-review@aforemendude-skills
 ```
 
-Start a new Codex session after installation so the plugin's skills are loaded.
+Codex detects newly installed skills automatically. If they do not appear, restart Codex.
 
 ### Use a local clone
 

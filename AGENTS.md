@@ -11,6 +11,11 @@ installing and using the published plugins.
 ├── plugins/
 │   └── <plugin-name>/
 │       ├── .codex-plugin/plugin.json
+│       ├── .app.json              # Optional connector mapping
+│       ├── .mcp.json              # Optional MCP server configuration
+│       ├── assets/                # Optional plugin presentation assets
+│       ├── hooks/
+│       │   └── hooks.json         # Optional lifecycle hooks
 │       └── skills/
 │           └── <skill-name>/
 │               ├── SKILL.md
@@ -25,6 +30,8 @@ installing and using the published plugins.
 - `.agents/plugins/marketplace.json` is the marketplace catalog. Each entry points to a plugin under `plugins/`.
 - `plugins/<plugin-name>/.codex-plugin/plugin.json` is the plugin manifest and the only place that stores the plugin's
   version.
+- Optional plugin-level `.app.json`, `.mcp.json`, `hooks/`, and `assets/` entries provide connector mappings, MCP server
+  configuration, lifecycle hooks, and presentation assets. Add only the components the plugin implements.
 - `plugins/<plugin-name>/skills/<skill-name>/SKILL.md` contains agent-facing instructions. Its adjacent
   `agents/openai.yaml` contains the skill's user-facing metadata and invocation policy.
 - `README.md` contains marketplace installation, plugin installation, and example prompts for users.
@@ -92,8 +99,8 @@ Use the `plugin-creator` skill when it is available. Target this repository's `p
 4. Add the plugin to the available-plugin list, installation commands, and example prompts in `README.md`.
 5. Run the validation and formatting checks described below.
 
-Do not add manifest fields for components that do not exist. In particular, add `apps` or `mcpServers` only with their
-corresponding implementation, and do not add unsupported `hooks` metadata to `plugin.json`.
+Do not add manifest fields for components that do not exist. In particular, add `apps`, `hooks`, or `mcpServers` only
+with their corresponding implementation and configuration files.
 
 ## Bump a plugin version
 
@@ -125,6 +132,6 @@ npm run format:check
 Also inspect the final diff and verify these cross-file contracts:
 
 - Plugin directory name = `plugin.json` name = marketplace entry name.
-- Skill directory name = `SKILL.md` name = `$skill-name` used in `openai.yaml`.
-- Plugin and marketplace paths resolve to existing files and directories.
+- Skill directory name = `SKILL.md` name; any `openai.yaml` default prompt uses `$skill-name`.
+- Plugin component and marketplace paths resolve to existing files and directories.
 - `README.md` descriptions and prompts reflect the published manifests and skills.
