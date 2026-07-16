@@ -54,8 +54,7 @@ description:
   dependencies, incorrect or incompatible runner, environment, transform, or reporting configuration, fragile setup, and
   awkward or nonstandard practices with concrete impact.
 - Do not review individual test cases, their fixture data, test logic, or assertions, and do not report coverage
-  adequacy or missing test scenarios. Inspect or run tests only as evidence for production behavior and infrastructure
-  findings; do not report defects in the tests themselves.
+  adequacy or missing test scenarios.
 - Treat a comment that acknowledges a potential issue and explains why it is acceptable as a dismissal. Do not report
   the issue when the explanation is accurate and sufficient. If the explanation is incorrect, stale, or fails to address
   the actual impact, report the finding and explain why the dismissal does not hold.
@@ -65,8 +64,6 @@ description:
   revoking or rotating exposed credentials and removing other exposed copies or repository history when applicable.
 
 # Workflow
-
-Run commands one at a time.
 
 1. Confirm the review scope.
 2. Inspect the worktree before creating or changing any report. If there are any uncommitted changes, stop and ask the
@@ -80,7 +77,7 @@ Run commands one at a time.
 6. Verify each candidate finding in current code. Check applicable dismissing comments, cite exact file paths and
    current line numbers, explain the impact, and identify a focused recommendation.
 7. Progressively update the relevant report after each meaningful milestone with verified findings, resolved scope,
-   checks run, and material residual risks. Do not add speculative candidates that still need verification.
+   checks run, and material residual risks.
 8. Run focused static checks or tests when they would materially strengthen the review. Do not update snapshots or
    generated artifacts merely to make a check pass. Record relevant checks that could not be run and why.
 9. Complete every segment report. State explicitly when a reviewed segment has no findings, without implying that it is
@@ -96,8 +93,6 @@ Run commands one at a time.
   problem with meaningful impact.
 - `Low`: a limited-impact correctness, maintainability, documentation, or test-setup problem.
 
-Classify style-only or editorial defects as `Low` only when they are worth reporting because they create concrete risk.
-
 # Outputs
 
 Write each report to `CODE_REVIEW_<SCOPE_DESCRIPTION>.md` in the current working directory, where `<SCOPE_DESCRIPTION>`
@@ -106,7 +101,8 @@ is a concise uppercase snake-case label derived from the reviewed scope. For exa
 segment rather than combining all segments into one file.
 
 Preserve an existing report and append `_<TIMESTAMP>` before `.md`, where `<TIMESTAMP>` is the current local time in
-`YYYY_MM_DD_HH_MM_SS` format. Choose a new timestamp if that path also exists.
+`YYYY_MM_DD_HH_MM_SS` format. Choose a new timestamp if that path also exists. When progressively updating a report, the
+report that was created in the same session can be updated.
 
 Use a report structure suited to the selected segment; no fixed schema or finding order is required. Identify the scope
 and review basis. For each finding, provide a concise title, severity, exact file and line reference, problem, impact,
