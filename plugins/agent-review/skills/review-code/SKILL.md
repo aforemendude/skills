@@ -38,7 +38,7 @@ description:
 # Review Guide
 
 - Prefer actionable findings with concrete user, data, security, reliability, performance, compatibility, or maintenance
-  impact. Omit style-only comments unless they create a meaningful risk.
+  impact.
 - Review for:
   - incorrect logic, broken invariants, unhandled boundaries, race conditions, error-handling gaps, data loss, and
     compatibility regressions;
