@@ -1,6 +1,6 @@
 {
   "name": "agent-review",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Review explicitly scoped code or selected Markdown content, including Markdown prompts and SKILL.md files.",
   "author": {
     "name": "aforemendude",
@@ -13,7 +13,7 @@
   "interface": {
     "displayName": "Agent Review",
     "shortDescription": "Review selected code and Markdown content",
-    "longDescription": "Review explicitly scoped code in a clean worktree and progressively write report-only findings for correctness, security, maintainability, and test setup and configuration, or review selected Markdown content for correctness and clarity with additional prompt and skill checks, while redacting secrets and sensitive personal data from reports.",
+    "longDescription": "Review explicitly scoped code in a clean worktree and progressively write report-only findings for correctness, security, maintainability, and test infrastructure, including dependencies, setup, and configuration, or review selected Markdown content for correctness and clarity with additional prompt and skill checks, while redacting secrets and sensitive personal data from reports.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
