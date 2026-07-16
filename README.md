@@ -7,8 +7,9 @@ A repository-backed marketplace for reusable Codex plugins.
 - **Agent Fix** (`agent-fix`) — fixes both style quality (CSS ownership and unused CSS) and unit test quality
   (ownership, coverage, and assertions) within a user-specified scope.
 - **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, reliability, security,
-  performance, maintainability, architecture, and test infrastructure, or user-selected Markdown content for
-  correctness, clarity, structure, grammar, and consistency with additional checks for prompts and skills.
+  performance, maintainability, architecture, comments, naming, language quality, and test infrastructure, or
+  user-selected Markdown content for correctness, clarity, structure, grammar, and consistency with additional checks
+  for prompts and skills.
 
 ## Add the marketplace to Codex
 
@@ -109,6 +110,10 @@ useful evidence, using existing dependencies only.
 
 Test-related findings are limited to dependencies, infrastructure, setup, and configuration. The skill does not review
 individual test cases, their fixture data, test logic, assertions, coverage adequacy, or missing test scenarios.
+
+The code review also checks comments for inaccurate, stale, misleading, or contradictory content and flags grammar,
+spelling, typographical, and misleading identifier issues when they could cause misunderstanding or incorrect use.
+Formatting is left to the repository formatter.
 
 Use `$review-code` only in trusted repositories. The skill treats repository content as trusted and may run the
 repository's existing static checks or tests, which may execute repository-controlled code.
