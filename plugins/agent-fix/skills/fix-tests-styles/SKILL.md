@@ -1,29 +1,28 @@
 ---
 name: fix-tests-styles
 description:
-  Review or fix both style quality (CSS ownership and unused CSS) and unit test quality (ownership, coverage, and
-  assertions) within a user-specified scope. Use only when the user explicitly invokes `$fix-tests-styles` or asks to
-  use the fix-tests-styles skill.
+  Fix both style quality (CSS ownership and unused CSS) and unit test quality (ownership, coverage, and assertions)
+  within a user-specified scope. Use only when the user explicitly invokes `$fix-tests-styles` or asks to use the
+  fix-tests-styles skill.
 ---
 
 # Input and Scope
 
-- Require the user to select review or fix mode.
-- Require the user to specify a clear scope to review or fix. Accept any unambiguous scope description, including files,
+- Require the user to specify a clear scope to fix. Accept any unambiguous scope description, including files,
   directories, packages, applications, features, components, diffs or change sets, or the whole repository.
-- If the mode or scope is missing or ambiguous, stop and ask the user to provide or clarify it.
+- If the scope is missing or ambiguous, stop and ask the user to provide or clarify it.
 - Do not infer a repository-wide scope. Apply these requirements even when the user explicitly invokes this skill.
-- Review or fix both CSS and unit tests within the requested scope. Do not edit files during a review.
-- Inspect directly related files only as needed to verify ownership, usage, and behavior. Do not expand the review or
-  edit scope without the user's confirmation.
+- Fix both CSS and unit tests within the requested scope.
+- Inspect directly related files only as needed to verify ownership, usage, and behavior. Do not expand the edit scope
+  without the user's confirmation.
 - Apply the rules within each application or package boundary. Exclude dependencies, vendored code, and generated output
   directories such as `node_modules`, `coverage`, `dist`, and `build`.
 - Test-support files are non-test helpers that arrange or isolate test behavior: shared setup modules, fixtures, mocks,
   test utilities, builders, and factories. Do not include test-runner setup or tooling configuration files in this term;
   treat those separately as setup and configuration files.
-- In fix mode, limit edits to stylesheets; unit test files; test-support files used by modified tests; setup and
-  configuration files required by modified tests; and production-file imports or references required to move or remove
-  styles without changing behavior.
+- Limit edits to stylesheets; unit test files; test-support files used by modified tests; setup and configuration files
+  required by modified tests; and production-file imports or references required to move or remove styles without
+  changing behavior.
 - Treat class-name renames and source-ownership moves as report-only unless the user explicitly requests a rename or
   move. A general request to fix styles and unit tests does not provide that authorization. Once authorized, the
   preceding edit allowlist does not restrict production files: make every production-file edit needed to complete the
@@ -148,7 +147,7 @@ Run all commands one at a time. Do not install, update, or repair packages.
 
 ### Assertion Quality
 
-- Review every assertion in scope. Ensure each test proves its named observable behavior and would fail if the public
+- Inspect every assertion in scope. Ensure each test proves its named observable behavior and would fail if the public
   contract regressed; strengthen weak assertions and remove or complete assertion-free and tautological tests.
 - Prefer the most precise stable assertion supported by the public contract, including exact results, state transitions,
   rendered output, errors, or side effects. Do not settle for truthiness, definedness, existence, or the fact that a
@@ -190,7 +189,8 @@ Run all commands one at a time. Do not install, update, or repair packages.
 - After making changes, rerun the most focused relevant tests, followed by the applicable build and broader test
   commands used for the baseline. If a test run exposes an issue in an updated unit test, fix that test. Handle exposed
   production defects according to the guardrails.
-- For fixes, keep the final summary concise and exclude information readily available from `git diff`. Report only:
+- Keep the final summary concise. Do not repeat change statistics or information readily available from `git diff`.
+  Include the following when applicable:
   - Checks run and their results.
   - Unresolved source defects, with relevant file and line references.
   - Related work the user could reasonably assume was included but was not performed, with the reason and impact.
@@ -198,4 +198,4 @@ Run all commands one at a time. Do not install, update, or repair packages.
     the confirmed scope.
   - Additional setup or configuration changes and new or updated dependencies that would improve or complete the work
     but were not applied.
-- For reviews, list actionable findings with file and line references.
+  - Other information the user would likely want to know about.

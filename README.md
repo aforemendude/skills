@@ -4,8 +4,8 @@ A repository-backed marketplace for reusable Codex plugins.
 
 ## Available plugins
 
-- **Agent Fix** (`agent-fix`) — reviews and fixes both style quality (CSS ownership and unused CSS) and unit test
-  quality (ownership, coverage, and assertions) within a user-specified scope.
+- **Agent Fix** (`agent-fix`) — fixes both style quality (CSS ownership and unused CSS) and unit test quality
+  (ownership, coverage, and assertions) within a user-specified scope.
 - **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, security, maintainability, and
   test setup and configuration, or user-selected Markdown content for correctness and clarity with additional checks for
   prompts and skills. Reports redact secrets and sensitive personal data.
@@ -61,23 +61,17 @@ codex plugin marketplace remove aforemendude-skills
 
 #### `$fix-tests-styles`
 
-`$fix-tests-styles` requires two inputs: a mode (`review` or `fix`) and an unambiguous scope such as files, directories,
-packages, components, a diff, or the whole repository. It always evaluates both CSS and unit tests in that scope.
+`$fix-tests-styles` requires an unambiguous scope such as files, directories, packages, components, a diff, or the whole
+repository. It fixes both CSS and unit tests in that scope.
 
-In fix mode, the skill may create, modify, or remove test-support files and edit setup or configuration required by the
-modified tests. It does not add or update dependencies. Its concise final report omits details readily available from
-the diff and instead reports checks, unresolved source defects, likely expected work that was not performed (including
-test-support refactoring blocked by effects outside the confirmed scope), and recommended setup, configuration, or
-dependency changes.
+The skill may create, modify, or remove test-support files and edit setup or configuration required by the modified
+tests. It does not add or update dependencies. Its concise final report omits change statistics and details readily
+available from the diff. It reports checks, unresolved source defects, likely expected work that was not performed
+(including test-support refactoring blocked by effects outside the confirmed scope), recommended setup, configuration,
+or dependency changes, and other context the user would likely need.
 
 Use `$fix-tests-styles` only in trusted repositories. The skill treats repository content as trusted and runs the
 repository's existing build and test commands, which may execute repository-controlled code.
-
-Review a package without changing files:
-
-```text
-Use $fix-tests-styles to review styles and unit tests throughout packages/dashboard.
-```
 
 Fix a component's styles and tests:
 
