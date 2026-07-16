@@ -6,10 +6,9 @@ A repository-backed marketplace for reusable Codex plugins.
 
 - **Agent Fix** (`agent-fix`) — fixes both style quality (CSS ownership and unused CSS) and unit test quality
   (ownership, coverage, and assertions) within a user-specified scope.
-- **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, security, maintainability, and
-  test infrastructure, including dependencies, setup, and configuration, or user-selected Markdown content for
-  correctness and clarity with additional checks for prompts and skills. Reports redact secrets and sensitive personal
-  data.
+- **Agent Review** (`agent-review`) — reviews explicitly scoped code for correctness, reliability, security,
+  performance, maintainability, architecture, and test infrastructure, or user-selected Markdown content for
+  correctness, clarity, structure, grammar, and consistency with additional checks for prompts and skills.
 
 ## Add the marketplace to Codex
 
@@ -129,7 +128,9 @@ Use $review-code to review the current code under packages/dashboard.
 #### `$review-markdown`
 
 `$review-markdown` requires one or more exact Markdown file paths and a review scope, such as complete current contents,
-uncommitted changes, a commit or commit range, or named sections or lines. It writes `MARKDOWN_REVIEW.md` by default.
+uncommitted changes, a commit or commit range, or named sections or lines. It reviews correctness, clarity, structure,
+grammar, and consistency, with additional instruction-design, safety, metadata, and operational checks for AI prompts
+and skills. It writes `MARKDOWN_REVIEW.md` by default.
 
 Review one complete file:
 

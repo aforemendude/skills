@@ -1,19 +1,19 @@
 {
   "name": "agent-fix",
-  "version": "3.0.0",
-  "description": "Fix style quality and unit test quality, including related test support and configuration, within a user-specified scope.",
+  "version": "3.0.1",
+  "description": "Fix style quality and unit test quality, including related test support, setup, and configuration, within a user-specified scope.",
   "author": {
     "name": "aforemendude",
     "url": "https://github.com/aforemendude"
   },
   "homepage": "https://github.com/aforemendude/skills",
   "repository": "https://github.com/aforemendude/skills",
-  "keywords": ["css", "unit-tests", "coverage", "maintenance"],
+  "keywords": ["coverage", "css", "maintenance", "unit-tests"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Fix",
-    "shortDescription": "Fix CSS and unit-test quality",
-    "longDescription": "Fix both style quality (misplaced or unused CSS) and unit test quality (ownership, coverage, assertions, support, and configuration) within a user-specified scope.",
+    "shortDescription": "Fix CSS, unit tests, and test support",
+    "longDescription": "Fix both style quality (misplaced or unused CSS) and unit test quality (ownership, coverage, assertions, support, setup, and configuration) within a user-specified scope.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"]
