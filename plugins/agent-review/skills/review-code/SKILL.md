@@ -104,11 +104,14 @@ Preserve an existing report and append `_<TIMESTAMP>` before `.md`, where `<TIME
 `YYYY_MM_DD_HH_MM_SS` format. Choose a new timestamp if that path also exists. When progressively updating a report, the
 report that was created in the same session can be updated.
 
-Use a report structure suited to the selected segment; no fixed schema or finding order is required. Identify the scope
-and review basis. For each finding, provide a concise title, severity, exact file and line reference, problem, impact,
-and focused recommendation. Keep unresolved questions separate from findings. End with the checks run and material
-checks or areas not covered.
+Include the following in each report:
 
-If a segment has no findings, say so explicitly without implying the code is defect-free. In the final response, link
-every report, summarize findings by severity across all segments, and list the checks run without repeating the full
-reports.
+- the reviewed scope and review basis;
+- each finding as a separate entry with a concise title, severity, exact file and line reference, problem, impact, and
+  focused recommendation;
+- unresolved questions in a section separate from the findings;
+- material checks or areas not covered;
+- any other information the user would likely want to know about.
+
+If a segment has no findings, say so explicitly without implying the code is defect-free. In the final response, provide
+a bullet list linking every report file. Do not repeat or summarize information contained in the reports.
