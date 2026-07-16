@@ -2,10 +2,10 @@
 name: review-code
 description:
   Review user-selected code within an explicit scope for correctness, reliability, security, performance,
-  maintainability, architecture, and test infrastructure, including dependencies, setup, and configuration. Produce
-  report-only findings without modifying the reviewed code. Use only when the user explicitly invokes `$review-code` or
-  asks to use the review-code skill and provides a code review scope such as files, directories, packages, applications,
-  features, components, a diff or change set, or the whole repository.
+  maintainability, architecture, dependencies, setup, configuration, and test infrastructure. Produce report-only
+  findings without modifying the reviewed code. Use only when the user explicitly invokes `$review-code` or asks to use
+  the review-code skill and provides a code review scope such as files, directories, packages, applications, features,
+  components, a diff or change set, or the whole repository.
 ---
 
 # Inputs and Scope
@@ -15,9 +15,9 @@ description:
 - If the scope is missing or ambiguous, stop and ask the user to provide or clarify it. Do not infer a repository-wide
   scope.
 - Assume third-party dependency source, vendored code, and generated output are out of scope.
-- Review production code and the configuration, migrations, scripts, test setup, or other files needed to understand and
-  verify its behavior. Inspect directly related files outside the selected scope only when necessary to validate a
-  finding.
+- Review production code and its dependency manifests, configuration, setup, migrations, scripts, test infrastructure,
+  or other files needed to understand and verify its behavior. Inspect directly related files outside the selected scope
+  only when necessary to validate a finding.
 - Before detailed review, divide a large scope into smaller logical segments such as applications, packages, subsystems,
   features, or coherent change groups. Keep each segment small enough to review and report independently.
 
@@ -49,6 +49,11 @@ description:
   - avoidable latency, repeated work, unbounded resource use, leaks, and scaling risks;
   - architectural coupling, unclear ownership, fragile abstractions, duplication, and maintainability problems with
     concrete impact;
+  - missing, unused, duplicate, incorrectly scoped, incompatible, or conflicting dependencies, including inconsistencies
+    among manifests, peer requirements, imports, and runtime or toolchain constraints;
+  - incorrect, contradictory, stale, unsafe, or fragile configuration and setup across application, build, packaging,
+    deployment, runtime, CI, and local-development workflows, including scripts, environment contracts, defaults, paths,
+    initialization order, and platform assumptions;
   - incorrect, stale, misleading, or contradictory comments, including comments that misstate behavior, invariants,
     risks, or non-obvious constraints;
   - grammar, spelling, and typographical errors, and misleading or inaccurate variable, function, type, and other
@@ -74,8 +79,9 @@ description:
 1. Confirm the review scope.
 2. Inspect the worktree before creating or changing any report. If there are any uncommitted changes, stop and ask the
    user to commit or stash them.
-3. Inspect applicable repository instructions, project structure, entry points, test dependencies, test setup and
-   configuration, manifests, build scripts, and nearby documentation needed to judge the selected scope.
+3. Inspect applicable repository instructions, project structure, entry points, dependency manifests and lockfiles,
+   setup and build scripts, runtime and toolchain constraints, relevant configuration, test infrastructure, and nearby
+   documentation needed to judge the selected scope.
 4. Split a large scope into logical review segments and assign each segment its report path. Review and report one
    meaningful segment or milestone at a time; the segments may be handled in any order.
 5. Trace relevant call sites, data flows, state transitions, and shared contracts. Compare behavior with documentation,

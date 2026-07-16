@@ -1,6 +1,6 @@
 {
   "name": "agent-review",
-  "version": "2.0.5",
+  "version": "2.1.0",
   "description": "Review explicitly scoped code or selected Markdown content, including AI prompts and SKILL.md files.",
   "author": {
     "name": "aforemendude",
@@ -8,12 +8,12 @@
   },
   "homepage": "https://github.com/aforemendude/skills",
   "repository": "https://github.com/aforemendude/skills",
-  "keywords": ["code", "markdown", "prompts", "review", "security", "skills"],
+  "keywords": ["code", "configuration", "dependencies", "markdown", "prompts", "review", "security", "skills"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Review",
     "shortDescription": "Review code, Markdown, prompts, and skills",
-    "longDescription": "Review explicitly scoped code in a clean worktree and progressively write report-only findings for correctness, reliability, security, performance, maintainability, architecture, comments, naming, language quality, and test infrastructure, including dependencies, setup, and configuration, while leaving formatting to repository formatters; or review selected Markdown content for correctness, clarity, structure, grammar, and consistency, with additional instruction-design, safety, metadata, and operational checks for prompts and skills, while redacting secrets and sensitive personal data from reports.",
+    "longDescription": "Review explicitly scoped code in a clean worktree and progressively write report-only findings for correctness, reliability, security, performance, maintainability, architecture, dependencies, setup, configuration, comments, naming, language quality, and test infrastructure while leaving formatting to repository formatters; or review selected Markdown content for correctness, clarity, structure, grammar, and consistency, with additional instruction-design, safety, metadata, and operational checks for prompts and skills, while redacting secrets and sensitive personal data from reports.",
     "developerName": "aforemendude",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
