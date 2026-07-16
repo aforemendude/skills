@@ -102,16 +102,18 @@ Optional opt-ins:
 #### `$review-code`
 
 `$review-code` requires an unambiguous code review scope, such as files, directories, packages, applications, features,
-components, a diff or change set, a commit or commit range, or the whole repository. It writes `CODE_REVIEW.md` by
-default and runs focused relevant static checks or tests when feasible using existing dependencies.
+components, a diff or change set, a commit or commit range, or the whole repository. It requires a clean worktree and
+writes report-only findings progressively to `CODE_REVIEW_<SCOPE_DESCRIPTION>.md`. Large scopes are split into logical
+segments with one report per segment. The reviewer may run focused relevant static checks or tests when they provide
+useful evidence, using existing dependencies only.
 
 Test-related findings are limited to dependencies, infrastructure, setup, and configuration. The skill does not review
 individual test cases, their fixture data, test logic, assertions, coverage adequacy, or missing test scenarios.
 
-Review all uncommitted code changes:
+Review the whole repository:
 
 ```text
-Use $review-code to review all uncommitted code changes in this repository.
+Use $review-code to review the whole repository.
 ```
 
 Review a package's current code:
@@ -119,22 +121,6 @@ Review a package's current code:
 ```text
 Use $review-code to review the current code under packages/dashboard.
 ```
-
-Optional opt-ins:
-
-- **Apply fixes:** reviewed code is not edited unless the prompt explicitly requests fixes.
-
-  ```text
-  Use $review-code to review the current code under packages/dashboard and fix every finding you can resolve safely.
-  ```
-
-- **Choose the output:** provide a report path or request another output mode instead of the default generated Markdown
-  report.
-
-  ```text
-  Use $review-code to review all uncommitted code changes in this repository and return the complete review in chat
-  instead of writing a report file.
-  ```
 
 #### `$review-markdown`
 

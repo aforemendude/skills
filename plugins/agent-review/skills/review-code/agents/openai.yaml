@@ -1,6 +1,6 @@
 interface:
   display_name: 'Review Code'
-  short_description: 'Review selected code and changes'
-  default_prompt: 'Use $review-code to review all uncommitted code changes in this repository.'
+  short_description: 'Review selected code and write reports'
+  default_prompt: 'Use $review-code to review the whole repository.'
 policy:
   allow_implicit_invocation: false
