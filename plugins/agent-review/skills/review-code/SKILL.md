@@ -79,9 +79,9 @@ description:
 1. Confirm the review scope.
 2. Inspect the worktree before creating or changing any report. If there are any uncommitted changes, stop and ask the
    user to commit or stash them.
-3. Inspect applicable repository instructions, project structure, entry points, dependency manifests and lockfiles,
-   setup and build scripts, runtime and toolchain constraints, relevant configuration, test infrastructure, and nearby
-   documentation needed to judge the selected scope.
+3. Inspect applicable repository instructions, project structure, entry points, dependency manifests, setup and build
+   scripts, runtime and toolchain constraints, relevant configuration, test infrastructure, and nearby documentation
+   needed to judge the selected scope.
 4. Split a large scope into logical review segments and assign each segment its report path. Review and report one
    meaningful segment or milestone at a time; the segments may be handled in any order.
 5. Trace relevant call sites, data flows, state transitions, and shared contracts. Compare behavior with documentation,
